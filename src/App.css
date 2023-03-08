@@ -1,0 +1,609 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gentium+Book+Basic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
+
+/* .App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+} */
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #0c0e11;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.footer{
+  
+  background-color: black;
+  padding-bottom: 0.25cm;
+  padding-top: 0.25cm;
+  display: flex;
+  gap: 2rem;
+  justify-content: right;
+  padding-right: 50px;
+  
+}
+.icons{
+  
+  color: white;
+  font-size: 1.5rem;
+  position: relative;
+  cursor: pointer;
+}
+.followus{
+  color: white;
+}
+.college{
+  color: white;
+  padding-right: 670px;
+}
+.firstpage{
+  font-family: 'Dancing Script', cursive;
+  /* padding-bottom:400px ;
+  padding-top: 40px;
+  padding-right: 80px; */
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  margin-bottom: 460px;
+  margin-left: 80px;
+  margin-right: 120px;
+  font-size: 70px;
+  text-align: center;
+  color: white
+  /* background-color: whitesmoke; */
+}
+.faculty{
+  background-color: rgba(255, 183, 0, 0.966);
+  color: black;
+  margin-left: 380px;
+  margin-right: 380px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-weight: bold;
+  font-family: 'Lora', serif;
+ 
+
+}
+.navlink{
+  color: white;
+  outline-style: none;
+  text-decoration: none;
+}
+
+.navi1{
+  color:white;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  height: 1cm;
+  align-items: center;
+  gap: 1.5rem ;
+  padding: 0 1rem;
+
+
+}
+.navi2{
+  margin-left: 520px;
+  color: white;
+  font-weight: bold ;
+  font-size: 20px;
+  justify-content: space-around;
+  gap: 1rem;
+  align-items: center;
+}
+.logo{
+  padding: 0 1rem;
+  
+}
+
+.para{
+  background-color: rgba(255, 183, 0, 0.966);
+  color: black;
+  margin-left: 270px;
+  margin-right: 270px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: large;
+  font-family: 'Didact Gothic', sans-serif;
+  font-weight: bold;
+  
+}
+
+.signup{
+
+  font-weight: 1000;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("https://png.pngtree.com/background/20221109/original/pngtree-logistics-doodle-set-container-truck-picture-image_1952118.jpg");
+  background-size: cover;
+}
+
+.container1{
+  position: relative;
+  max-width: 1000px;
+  width: 100%;
+  border-radius: 6px;
+  padding: 40px;
+  margin-right: 80px;
+  margin-left: 50px;
+  background-color: rgb(255, 166, 0);
+}
+.container1 header{ 
+  font-size: 40px;
+  font-weight: 600;
+  color:black;
+  text-decoration: underline;
+  margin-left: 40px;
+  
+}
+
+.container1 form{
+  position: relative;
+  min-height: 500px;
+  background-color: white;
+  margin-top: 18px;
+  margin-right: 60px;
+  margin-left: 30px;
+}
+.title{
+  text-decoration: underline;
+}
+.container1 form .Details{
+  margin-top: 1 0px ;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  
+}
+
+.container1 form .fields{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+form .fields .input-field{
+  display: flex;
+  width: calc(100% / 3 - 15px);
+  flex-direction: column;
+  margin:6px 0;
+}
+ 
+.input-field input{
+  outline: none;
+  font-size: 14px ;
+  font-weight: 400;
+  color:#333 ;
+  border-radius: 5px;
+  border: 1px solid black;
+  padding: 0 15px;
+  height: 42px;
+  margin: 8px 0;
+}
+
+/* .input-field input:is(:focus,:valid){
+  box-shadow: black;
+}
+.input-field input[type="date"]:focus{
+ color: black;
+}
+.input-field input[type="date"]:valid{
+  color: black;
+ } */
+ .container1 form button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 45px;
+  max-width: 150px;
+  width: 100%;
+  font-weight: bolder;
+  border: 5px;
+  outline: #0c0e11;
+  color: black;
+  border-radius: 5px;
+  margin: 20px 0;
+  background-color:rgb(32, 193, 32) ;
+  transition: all 0.3s linear;
+  cursor: pointer ;
+ }
+ form button:hover{
+  background-color:chartreuse ;
+ }
+ 
+ 
+.main{
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  padding: 90px 0 90px 0;
+  background-image: url("https://png.pngtree.com/background/20221109/original/pngtree-logistics-doodle-set-container-truck-picture-image_1952118.jpg");
+  background-size: cover;
+}
+.sub-main{
+  display: flex;
+  justify-content: center;
+  height: 550px;
+  width: 40%;
+  box-shadow: 11px 12px 13px 12px orange;
+  padding-top: 30px;
+  border-radius: 60px;
+  background-color: rgb(255, 166, 0);
+}
+
+.Login{
+  margin-bottom: 20px;
+}
+
+form .fields .input-field2{
+  display: flex;
+  width: calc(100% / 3 - 15px);
+  flex-direction: column;
+
+
+}
+ 
+.input-field2 input{
+  outline: none;
+  font-size: 14px ;
+  font-weight: 400;
+  color:#333 ;
+  border-radius: 5px;
+  border: 1px solid black;
+  padding: 0 15px;
+  height: 42px;
+  margin: 8px 0;
+  margin-left: 10px;
+}
+.loginbutton{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 45px;
+  max-width: 150px;
+  width: 100%;
+  font-weight: bolder;
+  border: 5px;
+  outline: #0c0e11;
+  color: black;
+  border-radius: 5px;
+  margin: 30px 0;
+  margin-left: 70px;
+  background-color:rgb(32, 193, 32) ;
+  transition: all 0.3s linear;
+  cursor: pointer ;
+ }
+ .navlinklogin{
+  text-decoration: underline;
+  color: black;
+ }
+.prdesk{
+  background-image:url("https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77700462588.jpg");
+  display: flex;
+  padding-bottom: 400px;
+  background-size: cover;
+  position: relative;
+}
+
+.prheading{
+padding-left: 950px;
+padding-top: 60px;
+color: black;
+font-family: 'Lilita One', cursive;
+font-size: 60px;
+
+}
+.prname1{
+  padding-left: 650px;
+  margin-top: 60px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: black;
+  font-size: 26px;
+  font-weight: bolder;
+  text-decoration: underline;
+}
+.prnamecn1{
+  padding-left: 670px;
+  margin-top: -10px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: black;
+  font-size: 26px;
+  font-weight: bolder;
+  text-decoration: underline;
+}
+.prname2{
+  padding-left: 970px;
+  margin-top: -102px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: black;
+  font-size: 26px;
+  font-weight: bolder;
+  text-decoration: underline; 
+}
+.prnamecn2{
+  padding-left: 974px;
+  margin-top: -10px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: black;
+  font-size: 26px;
+  font-weight: bolder;
+  text-decoration: underline;
+}
+.prname3{
+  padding-left: 1260px;
+  margin-top: -99px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: black;
+  font-size: 26px;
+  font-weight: bolder;
+  text-decoration: underline; 
+}
+.prnamecn3{
+  padding-left: 1260px;
+  margin-top: -10px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: black;
+  font-size: 26px;
+  font-weight: bolder;
+  text-decoration: underline;
+}
+.prname4{
+  padding-left: 646px;
+  margin-top: 80px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: black;
+  font-size: 26px;
+  font-weight: bolder;
+  text-decoration: underline;
+}
+.prnamecn4{
+  padding-left: 670px;
+  margin-top: -10px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: black;
+  font-size: 26px;
+  font-weight: bolder;
+  text-decoration: underline;
+}
+.prname5{
+  padding-left: 970px;
+  margin-top: -100px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: black;
+  font-size: 26px;
+  font-weight: bolder;
+  text-decoration: underline; 
+}
+.prnamecn5{
+  padding-left: 990px;
+  margin-top: -10px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: black;
+  font-size: 26px;
+  font-weight: bolder;
+  text-decoration: underline;
+}
+.prname6{
+  padding-left: 1260px;
+  margin-top: -99px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: black;
+  font-size: 26px;
+  font-weight: bolder;
+  text-decoration: underline; 
+}
+.prnamecn6{
+  padding-left: 1270px;
+  margin-top: -10px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: black;
+  font-size: 26px;
+  font-weight: bolder;
+  text-decoration: underline;
+}
+
+.prdesk2{
+  padding-left: 10px;
+  margin-top: -430px;
+  margin-left: -120px;
+  position: relative;
+  display: flex;
+  height: 550px;
+  
+}
+.prpoints{
+color: black;
+font-family: 'Lilita One', cursive;
+font-size: 60px;
+margin-left: -1230px;
+padding-top: 630px;
+}
+
+.prpointsimg{
+  height: 270px;
+  margin-left:-450px;
+  margin-bottom: -300px;
+
+}
+
+.aboutus{
+  width: 100%;
+  background-image:linear-gradient( 295deg, rgba(255,255,255,0.9) 50%,transparent 50%),  url("https://byensnyt.dk/wp-content/uploads/2020/02/party456.jpg");
+  display: flex;
+  padding-bottom: 70px;
+  background-size: cover;
+}
+.aboutheading{
+  font-family: 'Cinzel Decorative', cursive;
+  padding-left: 1000px;
+  padding-top: 60px;
+  color: black;
+  font-size: 70px;
+  font-weight: bolder;
+
+}
+.aboutpara{
+  color: black;
+  width: 100vw;
+  min-height: 100vh;
+  line-height: 2;
+  padding-top: 320px;
+  margin-left:-550px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 21px;
+  
+
+}
+.chairperson{
+  padding-top:590px;
+  margin-left: -680px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+  font-size: 25px;
+  font-weight: bold;
+  color: #0c0e11;
+}
+.chairpersonname{
+  
+  margin-left: -680px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 25px;
+  font-weight: bold;
+  color: #0c0e11;
+  text-decoration: underline;
+}
+.advisoryhead{
+  margin-top:-110px;
+  margin-left: -300px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+  font-size: 25px;
+  color: #0c0e11;
+  font-weight: bold;
+
+}
+.advisoryheadname{
+  margin-bottom: -500px;
+  margin-left: -300px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
+  font-size: 25px;
+  color: #0c0e11;
+  font-weight: bold;
+  text-decoration: underline;
+
+}
+
+.vicechairperson{
+  padding-top:580px;
+  margin-left: -510px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+  font-size: 25px;
+  font-weight: bold;
+  color: #0c0e11;
+}
+.vicechairpersonname1{
+  margin-left: -780px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
+  font-size: 25px;
+  font-weight: bold;
+  color: #0c0e11;
+  text-decoration: underline;
+}
+.vicechairpersonname2{
+  margin-left: -500px;
+  margin-top: -55px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
+  font-size: 25px;
+  font-weight: bold;
+  color: #0c0e11;
+  text-decoration: underline;
+}
+.vicechairpersonname3{
+  margin-left: -210px;
+  margin-top: -55px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
+  font-size: 25px;
+  font-weight: bold;
+  color: #0c0e11;
+  text-decoration: underline;
+}
+
+.allevents{
+  padding-bottom: 80px;
+  padding-left: 50px;
+  padding-top: 50px;
+  background-image: url("https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77700462588.jpg");
+  background-size: cover;
+}
+.firstcard{
+  padding-left: 20px;
+}
+.secondcard{
+  padding-top: 100px;
+  padding-left: 20px;
+}
+.thirdcard{
+  padding-left: 490px;
+  margin-top:-1100px;
+  
+}
+.fourthcard{
+  padding-left: 490px;
+  padding-top: 100px;
+}
+.fifthcard{
+  padding-left: 960px;
+  margin-top: -1100px;
+  
+}
+.sixthcard{
+  padding-left:960px;
+  margin-top:94px;
+}
+.cardbody{
+  background-color:rgb(255, 247, 0);
+}
+.cardtitle{
+  font-family: 'Acme', sans-serif;
+
+} 
+.cardtext{
+  font-family: 'Gentium Book Basic', serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+
