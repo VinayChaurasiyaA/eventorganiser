@@ -18,7 +18,7 @@ function GroupExample() {
       <Card.Text className="cardtext">
         Strong minds suffer without complaining, weak minds complain without suffering.
       </Card.Text>
-      <Button variant="primary">ENROLL</Button>
+      <Button variant="primary" id="1">ENROLL</Button>
     </Card.Body>
   </Card>
   </div>
@@ -30,7 +30,7 @@ function GroupExample() {
       <Card.Text className="cardtext">
         In an informal environment, people tend to talk and share ideas more open-mindedly.
       </Card.Text>
-      <Button variant="primary">ENROLL</Button>
+      <Button variant="primary" id="2">ENROLL</Button>
     </Card.Body>
   </Card>
   </div>
@@ -42,7 +42,7 @@ function GroupExample() {
       <Card.Text className="cardtext">
         Sports play a major part in improving our physical and mental fitness.
       </Card.Text>
-      <Button variant="primary">ENROLL</Button>
+      <Button variant="primary"id="3">ENROLL</Button>
     </Card.Body>
   </Card>
   </div>
@@ -54,7 +54,7 @@ function GroupExample() {
       <Card.Text className="cardtext">
       The term "fine art" refers to an art form practised mainly for its beauty.
       </Card.Text>
-      <Button variant="primary">ENROLL</Button>
+      <Button variant="primary" id="4">ENROLL</Button>
     </Card.Body>
   </Card>
   </div>
@@ -67,7 +67,7 @@ function GroupExample() {
       It provides a platform for young brains to showcase their innovative ideas.
         
       </Card.Text>
-      <Button variant="primary">ENROLL</Button>
+      <Button variant="primary" id="5">ENROLL</Button>
     </Card.Body>
   </Card>
   </div>
@@ -79,7 +79,7 @@ function GroupExample() {
       <Card.Text className="cardtext">
       Once you get the taste for performing, you’ll never look back. 
       </Card.Text>
-      <Button variant="primary">ENROLL</Button>
+      <Button  variant="primary" id="6">ENROLL</Button>
     </Card.Body>
   </Card>
   </div>

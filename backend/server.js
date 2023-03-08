@@ -23,21 +23,34 @@ app.post("/login", (req, res) => {
         validation = "invalid";
       } else if (result.password === password) {
         data = { result };
-        console.log(data);
-        validation = "valid";
-        res.status(200);
+      //  console.log(data);
+      //  validation = "valid";
+        res.send({message : "success" , result : result});
       } else {
         validation = "invalid";
         res.status(400);
       }
     });
+    // Register.findOne({username : name } , (err , user) => {
+    //   if(user) {
+    //     if(password === user.password) {
+    //       console.log("done")
+    //       res.send({message : "LogIn succesfully" , user : user})
+    //     }
+    //     else {
+    //       res.send({message : "password didn't matched"});
+    //     }
+    //   }
+    //   else {
+    //     res.send("User invalid");
+    //   }
+    // })
   } catch (error) {
     validation = "invalid";
     res.status(400);
   }
 });
 app.get("/login", (req, res) => {
-
   res.json(data);
 });
 app.post("/register", (req, res) => {

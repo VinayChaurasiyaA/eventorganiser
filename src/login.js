@@ -3,13 +3,14 @@ import loginpic from "./Images/loginpic.png";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
-export default function Login() {
+export default function Login({setUserDetails}) {
   const navigate = useNavigate();
   const [input, setInput] = useState({
     username: "",
     password: "",
   });
   const handleChange = (event) => {
+    
     // const { name, value } = event.target;
     setInput(() => ({
       ...input,
@@ -21,10 +22,13 @@ export default function Login() {
   };
   const submitButton =  (e) => {
     e.preventDefault();
-
   //  console.log(input);
-    const user =  axios.post("http://localhost:5000/login", input);
-    console.log(user.status);
+    const user = axios.post("http://localhost:5000/login", input).then(res => {
+    //  console.log(res.data.result);
+      setUserDetails(res.data.result);
+      navigate("/user")
+    })
+    //console.log(user);
   };
   return (
     <div className="main">

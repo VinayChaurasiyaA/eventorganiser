@@ -607,3 +607,16 @@ padding-top: 630px;
   font-weight: bold;
 }
 
+.student-details {
+  margin: 100px;
+  margin-left: 30px;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid bisque;
+
+}
+.image {
+  font-weight: 600;
+   margin-left: 30rem;
+}
