@@ -81,11 +81,24 @@ app.get("/allevents", (req, res) => {
 app.get("/:id", (req, res) => {
   let id = req.params.id;
   //console.log(id);
-  Events.find({id : id}).then((result) => {
+  Events.find({ id: id }).then((result) => {
     console.log(result);
     res.send(result);
-  })
+  });
   // res.send("I am reading paramerter" + req.params.id);
+});
+app.put("/event", (req, res) => {
+  let name = req.body.username;
+  Register.updateOne(
+    { username: name },
+    {
+      $set: {
+        event: req.body.selection,
+      },
+    }
+  ).then((result) => {
+    res.send(result);
+  });
 });
 app.listen(port, () => {
   console.log(`Server is running on ${port}`);

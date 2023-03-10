@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
   MDBBtn,
@@ -12,6 +13,13 @@ import {
 } from "mdb-react-ui-kit";
 
 const Event = ({ eventId }) => {
+  const [name, setName] = useState("");
+  const [username, setUserName] = useState("");
+  const [collegename, setCollegeName] = useState("");
+  const [id, setId] = useState("");
+  const [selection, setSelection] = useState("");
+  const navigate = useNavigate();
+
   const [data, setData] = useState({});
   useEffect(() => {
     axios.get(`http://localhost:5000/${eventId}`).then((res) => {
@@ -19,6 +27,28 @@ const Event = ({ eventId }) => {
       setData(res.data);
     });
   }, []);
+  const handleOnSubmit = (e) => {
+    //todo
+    e.preventDefault();
+    // console.log(name, username, collegename, id);
+    const data = [
+      {
+        name,
+        username,
+        collegename,
+        id,
+        selection,
+      },
+    ];
+    axios.put("http://localhost:5000/event", data).then((result) => {
+      console.log(result.status);
+      if (result.status === 200) {
+        alert("Done registration");
+        navigate("/");
+      }
+    });
+    console.log(data);
+  };
   return (
     <>
       <div className="allevents">
@@ -32,7 +62,7 @@ const Event = ({ eventId }) => {
             <MDBCol lg="8">
               <MDBCard className="my-5 rounded-3" style={{ maxWidth: "600px" }}>
                 <MDBCardImage
-                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+                  src={`https://unsplash.com/s/photos/${data[0]?.eventname}`}
                   className="w-100 rounded-top"
                   alt="Sample photo"
                 />
@@ -46,13 +76,17 @@ const Event = ({ eventId }) => {
                     label="Name"
                     id="form1"
                     type="text"
+                    name="name"
                     placeholder="Enter your name"
+                    onChange={(e) => setName(e.target.value)}
                   />
                   <MDBInput
                     wrapperClass="mb-4"
                     label="College Name"
                     id="form1"
                     type="text"
+                    name="college"
+                    onChange={(e) => setCollegeName(e.target.value)}
                     placeholder="College Name"
                   />
                   <MDBInput
@@ -61,30 +95,44 @@ const Event = ({ eventId }) => {
                     id="form1"
                     type="text"
                     placeholder="Username"
+                    name="username"
+                    onChange={(e) => setUserName(e.target.value)}
                   />
 
                   <MDBRow>
                     <MDBCol md="6">
-                      <MDBInput
-                        wrapperClass="datepicker mb-4"
-                        label="Register in event"
-                        id="form2"
-                        type="text"
-                      />
+                      <select
+                        class="form-select"
+                        aria-label="Default select example"
+                        name="selection"
+                        onChange={(e) => setSelection(e.target.value)}
+                      >
+                        <option selected>Register In event</option>
+                        <option>BasketBall</option>
+                        <option>Kabadi</option>
+                        <option>KHOKHO</option>
+                      </select>
                     </MDBCol>
                   </MDBRow>
                   <MDBRow>
-                    <MDBCol md="6">
+                    <MDBCol className="pt-2" md="6">
                       <MDBInput
                         wrapperClass="mb-4"
                         label="CollegeId code"
                         id="form3"
                         type="text"
+                        name="collegeId"
+                        onChange={(e) => setId(e.target.value)}
                       />
                     </MDBCol>
                   </MDBRow>
 
-                  <MDBBtn color="success" className="mb-4" size="lg">
+                  <MDBBtn
+                    color="success"
+                    className="mb-4"
+                    size="lg"
+                    onClick={handleOnSubmit}
+                  >
                     Submit
                   </MDBBtn>
                 </MDBCardBody>

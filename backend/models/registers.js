@@ -12,6 +12,10 @@ const studentSchema = new mongoose.Schema({
   username: String,
   password: String,
   cpassword: String,
+  event: {
+    type : String ,
+    default : null
+  }
 });
 
 const Register = new mongoose.model("Register" , studentSchema);
