@@ -2,6 +2,8 @@ import React from 'react'
 
 export default function Topevents() {
   return (
-    <div>Topevents</div>
+    <div className='allevents'>
+      
+    </div>
   )
 }

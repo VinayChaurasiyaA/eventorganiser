@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 require("./db/connection");
 const Register = require("./models/registers");
+const Events = require("./models/events");
 
 const router = express.Router();
 const app = express();
@@ -10,7 +11,6 @@ app.use(express.json());
 app.use(cors("*"));
 app.use(express.urlencoded({ extended: true }));
 
-var validation;
 let data;
 
 app.post("/login", (req, res) => {
@@ -20,33 +20,17 @@ app.post("/login", (req, res) => {
     console.log(`${name} and ${password}`);
     Register.findOne({ username: name }).then((result) => {
       if (result === null) {
-        validation = "invalid";
+        res.send({ message: "failed" });
       } else if (result.password === password) {
         data = { result };
-      //  console.log(data);
-      //  validation = "valid";
-        res.send({message : "success" , result : result});
+        //  console.log(data);
+        //  validation = "valid";
+        res.send({ message: "success", result: result });
       } else {
-        validation = "invalid";
-        res.status(400);
+        res.send({ message: "failed" });
       }
     });
-    // Register.findOne({username : name } , (err , user) => {
-    //   if(user) {
-    //     if(password === user.password) {
-    //       console.log("done")
-    //       res.send({message : "LogIn succesfully" , user : user})
-    //     }
-    //     else {
-    //       res.send({message : "password didn't matched"});
-    //     }
-    //   }
-    //   else {
-    //     res.send("User invalid");
-    //   }
-    // })
   } catch (error) {
-    validation = "invalid";
     res.status(400);
   }
 });
@@ -81,6 +65,27 @@ app.post("/register", (req, res) => {
   } catch (error) {
     res.status(400).send(error);
   }
+});
+
+app.get("/allevents", (req, res) => {
+  try {
+    Events.find({}).then((result) => {
+      // console.log(result);
+      res.send(result);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+app.get("/:id", (req, res) => {
+  let id = req.params.id;
+  //console.log(id);
+  Events.find({id : id}).then((result) => {
+    console.log(result);
+    res.send(result);
+  })
+  // res.send("I am reading paramerter" + req.params.id);
 });
 app.listen(port, () => {
   console.log(`Server is running on ${port}`);

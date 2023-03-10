@@ -5,6 +5,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Sidenav from "./sidenav";
 import Homepage from "./homepage";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { useState } from "react";
+
 import About from "./about";
 import Allevents from "./allevents";
 import Footer from "./footer";
@@ -13,10 +15,11 @@ import Signup from "./signup";
 import PRDesk from "./prdesk";
 import Login from "./login";
 import User from "./User";
-import { useState } from "react";
+import Event from './Event'
 
 function App() {
   const [userDetails, setUserDetails] = useState({});
+  const [eventId , setEventId] = useState();
   return (
     <div>
       <BrowserRouter>
@@ -24,10 +27,11 @@ function App() {
         <Routes>
           <Route path="/" exact element={<Homepage />} />
           <Route path="/about us" exact element={<About />} />
-          <Route path="/allevents" exact element={<Allevents />} />
+          <Route path="/allevents" exact element={<Allevents setEventId={setEventId}/>} />
           <Route path="/topevents" exact element={<Topevents />} />
           <Route path="/signup" exact element={<Signup />} />
           <Route path="/prdesk" exact element={<PRDesk />} />
+          <Route path="/event-register" exact element={<Event eventId={eventId}/>} />
           <Route
             path="/login"
             exact
