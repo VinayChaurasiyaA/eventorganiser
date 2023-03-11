@@ -10,14 +10,14 @@ import sportevent from "./Images/sportevent.jpg";
 import finearts from "./Images/finearts.jpg";
 import technicalevent from "./Images/technicalevent.jpg";
 import performingevent from "./Images/performingevent.jpg";
-function GroupExample({setEventId , eventId , setEventName , eventName}) {
+function GroupExample({ setEventId, eventId, setEventName, eventName }) {
   const [events, setEvents] = useState({});
   const navigate = useNavigate();
   useEffect(() => {
     axios.get("http://localhost:5000/allevents").then((res) => {
       console.log(res.data[0].eventname);
       setEvents(res.data);
-      setEventName(res.data[0].eventname)
+      setEventName(res.data[0].eventname);
     });
   }, []);
   const handlOnClick = (id) => {
@@ -28,17 +28,26 @@ function GroupExample({setEventId , eventId , setEventName , eventName}) {
     setEventId(id);
     console.log(id);
     navigate(`/more-events/${eventName}`);
-  }
+  };
   return (
     <>
       {console.log(events.length)}
-      {events.length > 0
-        ? events.map((event) => (
-            <div className="allevents" key={event._id}>
-              <div className="shift">
-                <div className={`firstcard-${event.id}`} >
+      <div className="allevents event-container">
+        {events.length > 0
+          ? events.map((event) => (
+              <div className="shift ">
+                <div className={`firstcard-${event.id} cards`}>
                   <Card style={{ width: "26rem" }}>
-                    <Card.Img variant="top" src={mindevent} height="300px" />
+                    {/* <Card.Img variant="top" src={`${event.eventname.toLowerCase()}event`.jpg} height="300px" /> */}
+                    <Card.Img
+                      variant="top"
+                      src={`./Images/${event.eventname
+                        .toLowerCase()
+                        .concat("event")
+                        .concat(".jpg")}`}
+                      height="300px"
+                    />
+                    {console.log(event.eventname.toLowerCase().concat("event"))}
                     <Card.Body className="cardbody">
                       <Card.Title className="cardtitle">
                         Event Name : {event.eventname}
@@ -53,7 +62,10 @@ function GroupExample({setEventId , eventId , setEventName , eventName}) {
                       <Card.Text className="cardtext">
                         {event.description}
                       </Card.Text>
-                      <Button variant="primary" onClick={() => handlOnClick(event.id)}>
+                      <Button
+                        variant="primary"
+                        onClick={() => handlOnClick(event.id)}
+                      >
                         ENROLL
                       </Button>
                     </Card.Body>
@@ -64,9 +76,9 @@ function GroupExample({setEventId , eventId , setEventName , eventName}) {
                   </div>
                 </div>
               </div>
-            </div>
-          ))
-        : "No events Found"}
+            ))
+          : "No events Found"}
+      </div>
     </>
   );
 }

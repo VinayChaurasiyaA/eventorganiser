@@ -545,35 +545,18 @@ form .fields .input-field2 {
 }
 
 .allevents {
-  padding-bottom: 80px;
+  /* padding-bottom: 80px;
   padding-left: 50px;
-  padding-top: 50px;
+  padding-top: 50px; */
+  padding: 20px 20px;
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
   background-image: url("https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77700462588.jpg");
   background-size: cover;
 }
-.firstcard-1 {
-  padding-left: 20px;
-}
-.firstcard-2 {
-  padding-top: 100px;
-  padding-left: 20px;
-}
-.firstcard-3 {
-  padding-left: 490px;
-  margin-top: -1100px;
-}
-.firstcard-4 {
-  padding-left: 490px;
-  padding-top: 100px;
-}
-.firstcard-5 {
-  padding-left: 960px;
-  margin-top: -1100px;
-}
-.firstcard-6 {
-  padding-left: 960px;
-  margin-top: 94px;
-}
+
 .cardbody {
   background-color: rgb(255, 247, 0);
 }
@@ -585,7 +568,16 @@ form .fields .input-field2 {
   font-size: 20px;
   font-weight: bold;
 }
-
+.cards {
+  padding: 5px 10px;
+}
+.general-container {
+  margin: 10px;
+  padding: 5px 10px;
+  /* width: 100%; */
+  height: auto;
+  /* display: flex; */
+}
 .student-details {
   margin: 100px;
   margin-left: 30px;
@@ -598,7 +590,12 @@ form .fields .input-field2 {
   font-weight: 600;
   margin-left: 30rem;
 }
-.shifting{
+/* .shifting{
   display: inline-flex;
-}
+} */
 /* TODO SHIFTING OF DESCRIPTION */
+/* .event-container{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+} */
