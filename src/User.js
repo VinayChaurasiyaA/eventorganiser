@@ -20,6 +20,12 @@ const User = ({ userDetails }) => {
         <p className="image">Year : {userDetails.year}</p>
         <p className="image">Email : {userDetails.email}</p>
         <p className="image">Contact : {userDetails.contact}</p>
+        <h1 className="image">Events : </h1>
+        {userDetails.event === null ? (
+          <p>"No event registered"</p>
+        ) : (
+          <p className="image">{userDetails.event}</p>
+        )}
       </div>
     </div>
   );

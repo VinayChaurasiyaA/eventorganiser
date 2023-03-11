@@ -5,7 +5,7 @@ require("./db/connection");
 
 const Register = require("./models/registers");
 const Events = require("./models/events");
-const MoreEvents = require('./models/moreevents')
+const MoreEvents = require("./models/moreevents");
 
 const router = express.Router();
 const app = express();
@@ -59,7 +59,6 @@ app.post("/register", (req, res) => {
         username: req.body.username,
         password: req.body.password,
         cpassword: cpassword,
-        
       });
       const register = studentRegistration.save();
 
@@ -92,24 +91,27 @@ app.get("/:id", (req, res) => {
   });
   // res.send("I am reading paramerter" + req.params.id);
 });
-app.get("/more-events/:id" , (req ,res) => {
+app.get("/more-events/:id", (req, res) => {
   let name = req.params.id;
   // console.log(req.params)
-  MoreEvents.find({category : name}).then((result) => {
+  MoreEvents.find({ category: name }).then((result) => {
     console.log(result);
     res.send(result);
-  })
-})
+  });
+});
 app.put("/event", (req, res) => {
-  let name = req.body.username;
-  console.log(req.body.username);
+  const name = req.body[0].username;
+  const eventname = req.body[0].selection;
+  console.log(req.body[0]);
   Register.updateOne(
     { username: name },
     {
-      event: req.body.selection,
+      $set: {
+        event: req.body[0].selection,
+      },
     }
   ).then((result) => {
-    
+    console.log(result)
     res.send(result);
   });
 });

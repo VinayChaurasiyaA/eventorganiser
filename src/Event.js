@@ -12,13 +12,18 @@ import {
   MDBInput,
 } from "mdb-react-ui-kit";
 
-const Event = ({ eventId  , uniqueEvent}) => {
+const Event = ({ eventId, uniqueEvent, eventName }) => {
   const [name, setName] = useState("");
   const [username, setUserName] = useState("");
   const [collegename, setCollegeName] = useState("");
   const [id, setId] = useState("");
-  const [selection, setSelection] = useState("");
+  const [selection, setSelection] = useState(eventName);
   const navigate = useNavigate();
+  const [player1, setPlayerName] = useState("");
+  const [player2, setPlayerName2] = useState("");
+  const [player3, setPlayerName3] = useState("");
+  const [player4, setPlayerName4] = useState("");
+  const [player5, setPlayerName5] = useState("");
 
   const [data, setData] = useState({});
   useEffect(() => {
@@ -38,6 +43,11 @@ const Event = ({ eventId  , uniqueEvent}) => {
         collegename,
         id,
         selection,
+        player1,
+        player2,
+        player3,
+        player4,
+        player5,
       },
     ];
     console.log(data);
@@ -45,7 +55,7 @@ const Event = ({ eventId  , uniqueEvent}) => {
       console.log(result.status);
       if (result.status === 200) {
         alert("Done registration");
-        // navigate("/");
+         navigate("/");
       }
     });
     console.log(data);
@@ -74,47 +84,79 @@ const Event = ({ eventId  , uniqueEvent}) => {
                   </h3>
                   <MDBInput
                     wrapperClass="mb-4"
-                    label="Name"
                     id="form1"
                     type="text"
                     name="name"
-                    placeholder="Enter your name"
+                    placeholder="Enter Contigent name"
                     onChange={(e) => setName(e.target.value)}
                   />
                   <MDBInput
                     wrapperClass="mb-4"
-                    label="College Name"
                     id="form1"
                     type="text"
                     name="college"
                     onChange={(e) => setCollegeName(e.target.value)}
-                    placeholder="College Name"
+                    placeholder="Contigent Leader"
                   />
                   <MDBInput
                     wrapperClass="mb-4"
-                    label="Username"
                     id="form1"
                     type="text"
                     placeholder="Username"
                     name="username"
                     onChange={(e) => setUserName(e.target.value)}
                   />
-
-                  <MDBRow>
-                    <MDBCol md="6">
-                      <select
-                        class="form-select"
-                        aria-label="Default select example"
-                        name="selection"
-                        onChange={(e) => setSelection(e.target.value)}
-                      >
-                        <option selected>Register In event</option>
-                        <option>BasketBall</option>
-                        <option>Kabadi</option>
-                        <option>KHOKHO</option>
-                      </select>
-                    </MDBCol>
-                  </MDBRow>
+                  <h3>Player</h3>
+                  <MDBInput
+                    wrapperClass="mb-4"
+                    id="form1"
+                    type="text"
+                    name="name"
+                    placeholder="Enter your Player1 name"
+                    onChange={(e) => setPlayerName(e.target.value)}
+                  />
+                  <MDBInput
+                    wrapperClass="mb-4"
+                    id="form1"
+                    type="text"
+                    name="name"
+                    placeholder="Enter your Player2 name"
+                    onChange={(e) => setPlayerName2(e.target.value)}
+                  />
+                  <MDBInput
+                    wrapperClass="mb-4"
+                    id="form1"
+                    type="text"
+                    name="name"
+                    placeholder="Enter your Player3 name"
+                    onChange={(e) => setPlayerName3(e.target.value)}
+                  />
+                  <MDBInput
+                    wrapperClass="mb-4"
+                    id="form1"
+                    type="text"
+                    name="name"
+                    placeholder="Enter your Player4 name"
+                    onChange={(e) => setPlayerName4(e.target.value)}
+                  />
+                  <MDBInput
+                    wrapperClass="mb-4"
+                    id="form1"
+                    type="text"
+                    name="name"
+                    placeholder="Enter your Player5 name"
+                    onChange={(e) => setPlayerName5(e.target.value)}
+                  />
+                  <MDBInput
+                    wrapperClass="mb-4"
+                    id="form1"
+                    type="text"
+                    name="name"
+                    // placeholder="Enter your Player5 name"
+                    value={eventName}
+                    // selection={eventName}
+                    // onChange={(e) => setSelection(e.target.value)}
+                  />
                   <MDBRow>
                     <MDBCol className="pt-2" md="6">
                       <MDBInput
@@ -134,7 +176,7 @@ const Event = ({ eventId  , uniqueEvent}) => {
                     size="lg"
                     onClick={handleOnSubmit}
                   >
-                    Submit
+                    Register
                   </MDBBtn>
                 </MDBCardBody>
               </MDBCard>

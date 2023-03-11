@@ -11,9 +11,11 @@ const MoreEvents = ({ eventId, eventName, setEventName , setUniqueEvent}) => {
       setData(res.data);
     });
   }, []);
-  const handleOnSubmit = ( e, id) => {
+  const handleOnSubmit = ( e, id , eventname) => {
     e.preventDefault();
     setUniqueEvent(id);
+    // todo 
+    setEventName(eventname);
     navigate(`/${eventId}`);
   };
   return (
@@ -30,7 +32,7 @@ const MoreEvents = ({ eventId, eventName, setEventName , setUniqueEvent}) => {
                       <p class="card-text">{val?.description}</p>
 
                       <button
-                        onClick={(e) => handleOnSubmit(e , val._id)}
+                        onClick={(e) => handleOnSubmit(e , val._id , val.eventname)}
                         className="btn btn-primary"
                       >
                         Register

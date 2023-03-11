@@ -61,7 +61,7 @@ function App() {
           <Route
             path={`/${eventId}`}
             exact
-            element={<Event eventId={eventId} uniqueEvent={uniqueEvent} />}
+            element={<Event eventId={eventId} uniqueEvent={uniqueEvent} eventName={eventName} />}
           />
           <Route
             path="/login"
