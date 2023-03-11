@@ -12,7 +12,7 @@ import {
   MDBInput,
 } from "mdb-react-ui-kit";
 
-const Event = ({ eventId }) => {
+const Event = ({ eventId  , uniqueEvent}) => {
   const [name, setName] = useState("");
   const [username, setUserName] = useState("");
   const [collegename, setCollegeName] = useState("");
@@ -40,11 +40,12 @@ const Event = ({ eventId }) => {
         selection,
       },
     ];
+    console.log(data);
     axios.put("http://localhost:5000/event", data).then((result) => {
       console.log(result.status);
       if (result.status === 200) {
         alert("Done registration");
-        navigate("/");
+        // navigate("/");
       }
     });
     console.log(data);

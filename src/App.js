@@ -15,11 +15,15 @@ import Signup from "./signup";
 import PRDesk from "./prdesk";
 import Login from "./login";
 import User from "./User";
-import Event from './Event'
+import MoreEvents from "./MoreEvents";
+import Event from "./Event";
 
 function App() {
   const [userDetails, setUserDetails] = useState({});
-  const [eventId , setEventId] = useState();
+  const [eventId, setEventId] = useState();
+  const [eventName, setEventName] = useState();
+  const [uniqueEvent , setUniqueEvent] = useState();
+
   return (
     <div>
       <BrowserRouter>
@@ -27,11 +31,38 @@ function App() {
         <Routes>
           <Route path="/" exact element={<Homepage />} />
           <Route path="/about us" exact element={<About />} />
-          <Route path="/allevents" exact element={<Allevents setEventId={setEventId}/>} />
+          <Route
+            path="/allevents"
+            exact
+            element={
+              <Allevents
+                setEventId={setEventId}
+                eventId={eventId}
+                setEventName={setEventName}
+                eventName={eventName}
+              />
+            }
+          />
           <Route path="/topevents" exact element={<Topevents />} />
           <Route path="/signup" exact element={<Signup />} />
           <Route path="/prdesk" exact element={<PRDesk />} />
-          <Route path="/event-register" exact element={<Event eventId={eventId}/>} />
+          <Route
+            path={`/more-events/${eventName}`}
+            exact
+            element={
+              <MoreEvents
+                eventId={eventId}
+                setEventName={setEventName}
+                eventName={eventName}
+                setUniqueEvent={setUniqueEvent}
+              />
+            }
+          />
+          <Route
+            path={`/${eventId}`}
+            exact
+            element={<Event eventId={eventId} uniqueEvent={uniqueEvent} />}
+          />
           <Route
             path="/login"
             exact

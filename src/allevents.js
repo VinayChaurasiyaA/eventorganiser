@@ -10,13 +10,14 @@ import sportevent from "./Images/sportevent.jpg";
 import finearts from "./Images/finearts.jpg";
 import technicalevent from "./Images/technicalevent.jpg";
 import performingevent from "./Images/performingevent.jpg";
-function GroupExample({setEventId}) {
+function GroupExample({setEventId , eventId , setEventName , eventName}) {
   const [events, setEvents] = useState({});
   const navigate = useNavigate();
   useEffect(() => {
     axios.get("http://localhost:5000/allevents").then((res) => {
-      console.log(res.data.eventname);
+      console.log(res.data[0].eventname);
       setEvents(res.data);
+      setEventName(res.data[0].eventname)
     });
   }, []);
   const handlOnClick = (id) => {
@@ -26,7 +27,7 @@ function GroupExample({setEventId}) {
     // })
     setEventId(id);
     console.log(id);
-    navigate("/event-register");
+    navigate(`/more-events/${eventName}`);
   }
   return (
     <>
