@@ -49,6 +49,33 @@ app.post("/login", (req, res) => {
     res.status(400);
   }
 });
+app.post("/admineventmore", (req, res) => {
+  console.log(req.body);
+  try {
+    const adminevent = new MoreEvents({
+      eventname: req.body[0].category,
+      category: req.body[0].eventname,
+      description: req.body[0].description,
+    });
+    const moreEvents = adminevent.save();
+  } catch (error) {
+    console.log(error);
+  }
+});
+app.post("/adminevent", (req, res) => {
+  try {
+    console.log(req.body);
+    const event = new Events({
+      eventname: req.body[0].eventname,
+      date: req.body[0].date,
+      place: req.body[0].place,
+      description: req.body[0].description,
+    });
+    const events = event.save();
+  } catch (error) {
+    console.log(error);
+  }
+});
 app.post("/register", (req, res) => {
   try {
     const password = req.body.password;
@@ -128,8 +155,6 @@ app.post("/event", (req, res) => {
   const userEvent = userEvents.save();
   res.status(200).send("done");
 });
-
-
 
 app.listen(port, () => {
   console.log(`Server is running on ${port}`);

@@ -70,10 +70,6 @@ function GroupExample({ setEventId, eventId, setEventName, eventName }) {
                       </Button>
                     </Card.Body>
                   </Card>
-
-                  <div className="sidedesc">
-                    <div className="side">{event.description}</div>
-                  </div>
                 </div>
               </div>
             ))

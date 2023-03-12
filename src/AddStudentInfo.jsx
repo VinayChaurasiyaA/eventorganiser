@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios"
+import axios from "axios";
 import {
   MDBBtn,
   MDBContainer,
@@ -21,30 +21,36 @@ const AddStudentInfo = (data) => {
   const [eventType, setEventType] = useState("");
   const navigate = useNavigate();
 
-  const handleOnSubmit = () => {
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
     const newData = [
-        {
-            date : date,
-            description : description,
-            eventname : event,
-            place : place
-        }
-    ]
-
+      {
+        date: date,
+        description: description,
+        eventname: event,
+        place: place,
+      },
+    ];
     const anotherData = [
-        {
-            
-        }
-    ]
+      {
+        eventname: event,
+        description: description,
+        category: eventType,
+      },
+    ];
+    // console.log(newData , anotherData)
     //todo
     // on handlesubmit the data will go in 2 type of slabs which are 1 event and another more event
-    axios.post("http://localhost/event" , newData).then((result) => {
-        console.log(result);
-        if(result.status === 200 ){
-            alert("Done");
-        }   
-    })
-  }
+    axios.post("http://localhost:5000/adminevent", newData).then((result) => {
+      console.log(result);
+    });
+    axios.post("http://localhost:5000/admineventmore", anotherData).then((result) => {
+      console.log(result);
+      if (result.status === 200) {
+        alert("done");
+      }
+    });
+  };
 
   return (
     <>
@@ -52,7 +58,7 @@ const AddStudentInfo = (data) => {
         <MDBRow className="d-flex justify-content-center align-items-center">
           <MDBCol lg="8">
             <MDBCard className="my-2 rounded-3" style={{ maxWidth: "600px" }}>
-              <MDBCardBody className="px-2">    
+              <MDBCardBody className="px-2">
                 <MDBInput
                   wrapperClass="mb-4"
                   id="form1"
@@ -84,14 +90,6 @@ const AddStudentInfo = (data) => {
                   name="place"
                   placeholder="place"
                   onChange={(e) => setPlace(e.target.value)}
-                />
-                <MDBInput
-                  wrapperClass="mb-4"
-                  id="form1"
-                  type="text"
-                  name="name"
-                  placeholder={event}
-                //   onChange={(e) => setPlayerName2(e.target.value)}
                 />
                 <MDBInput
                   wrapperClass="mb-4"

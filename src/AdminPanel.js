@@ -15,16 +15,11 @@ const AdminPanel = () => {
 
   useEffect(() => {
     axios.get("http://localhost:5000/admin").then((res)=> {
-        console.log(res);
-        getData(res);
+        console.log(res.data);
+        getData(res.data);
     })
   }, []);
   const [event, setEvent] = useState("");
-//   const navigate = useNavigate();
-//   const handleOnClick = (e) => {
-//     e.preventDefault();
-//     navigate("/userdetails");
-//   };
 
   return (
     <div className="flex">
@@ -96,7 +91,7 @@ const AdminPanel = () => {
       {myDetails && (
         <div>
           {/* BOX 01 */}
-          {<Details />}
+          {<Details data={data}/>}
           {/* <div className="mx-2 bg-gray-100 rounded-xl border-2  border-gray-200 flex flex-col ">
             <div className="bg-gray-100  flex justify-center items-center">
               <p className="text-xl font-bold text-gray-800">All resgister details</p>

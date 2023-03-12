@@ -3,7 +3,7 @@ const eventss = new mongoose.Schema(
   {
     eventname: String,
     date: String,
-    place: String,
+    category: String,
     description: String,
   },
   {
