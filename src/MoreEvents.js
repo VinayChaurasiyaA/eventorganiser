@@ -35,7 +35,7 @@ const MoreEvents = ({ eventId, eventName, setEventName, setUniqueEvent }) => {
                     <div class="card-body">
                       <p class="card-text">{val?.description}</p>
                       <p className="card-text">{val?.description}</p>
-                      <h3>Requirements: </h3>
+                      <h3>Rule: </h3>
                       <ul>
                         <li className="card-text">{val?.description}</li>
                         <li className="card-text">{val?.description}</li>

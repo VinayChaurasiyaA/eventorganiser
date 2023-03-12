@@ -579,16 +579,18 @@ form .fields .input-field2 {
   /* display: flex; */
 }
 .student-details {
-  margin: 100px;
-  margin-left: 30px;
-  display: block;
+  margin: auto;
+  /* margin-left: 30px; */
+  display: inline-block;
   justify-content: center;
   align-items: center;
-  border: 1px solid bisque;
+  /* border: 1px solid bisque; */
 }
 .image {
   font-weight: 600;
-  margin-left: 30rem;
+  width: 100%;
+  height: auto;
+  /* margin-left: 30rem; */
 }
 /* .shifting{
   display: inline-flex;
@@ -599,3 +601,6 @@ form .fields .input-field2 {
   flex-wrap: wrap;
   flex-direction: row;
 } */
+.image img{
+  width: 200px;
+}

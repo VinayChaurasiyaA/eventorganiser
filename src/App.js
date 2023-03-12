@@ -17,12 +17,13 @@ import Login from "./login";
 import User from "./User";
 import MoreEvents from "./MoreEvents";
 import Event from "./Event";
+import AdminPanel from "./AdminPanel";
 
 function App() {
   const [userDetails, setUserDetails] = useState({});
   const [eventId, setEventId] = useState();
   const [eventName, setEventName] = useState();
-  const [uniqueEvent , setUniqueEvent] = useState();
+  const [uniqueEvent, setUniqueEvent] = useState();
 
   return (
     <div>
@@ -46,6 +47,7 @@ function App() {
           <Route path="/topevents" exact element={<Topevents />} />
           <Route path="/signup" exact element={<Signup />} />
           <Route path="/prdesk" exact element={<PRDesk />} />
+          <Route path="/adminspanel" exact element={<AdminPanel />} />
           <Route
             path={`/more-events/${eventName}`}
             exact
@@ -61,7 +63,13 @@ function App() {
           <Route
             path={`/${eventId}`}
             exact
-            element={<Event eventId={eventId} uniqueEvent={uniqueEvent} eventName={eventName} />}
+            element={
+              <Event
+                eventId={eventId}
+                uniqueEvent={uniqueEvent}
+                eventName={eventName}
+              />
+            }
           />
           <Route
             path="/login"

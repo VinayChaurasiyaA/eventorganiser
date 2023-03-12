@@ -13,7 +13,7 @@ import {
 } from "mdb-react-ui-kit";
 
 const Event = ({ eventId, uniqueEvent, eventName }) => {
-  const [name, setName] = useState("");
+  const [Cname, setName] = useState("");
   const [username, setUserName] = useState("");
   const [collegename, setCollegeName] = useState("");
   const [id, setId] = useState("");
@@ -38,7 +38,7 @@ const Event = ({ eventId, uniqueEvent, eventName }) => {
     // console.log(name, username, collegename, id);
     const data = [
       {
-        name,
+        Cname,
         username,
         collegename,
         id,
@@ -51,11 +51,14 @@ const Event = ({ eventId, uniqueEvent, eventName }) => {
       },
     ];
     console.log(data);
-    axios.put("http://localhost:5000/event", data).then((result) => {
+    axios.post("http://localhost:5000/event", data).then((result) => {
       console.log(result.status);
       if (result.status === 200) {
         alert("Done registration");
          navigate("/");
+      }
+      else {
+        console.log(result)
       }
     });
     console.log(data);
@@ -73,7 +76,7 @@ const Event = ({ eventId, uniqueEvent, eventName }) => {
             <MDBCol lg="8">
               <MDBCard className="my-5 rounded-3" style={{ maxWidth: "600px" }}>
                 <MDBCardImage
-                  src={`https://unsplash.com/s/photos/${data[0]?.eventname}`}
+                  src={`https://unsplash.com/s/photos/${data[0]?.eventname}-event`}
                   className="w-100 rounded-top"
                   alt="Sample photo"
                 />

@@ -6,6 +6,7 @@ require("./db/connection");
 const Register = require("./models/registers");
 const Events = require("./models/events");
 const MoreEvents = require("./models/moreevents");
+const UserEvent = require("./models/userEvents");
 
 const router = express.Router();
 const app = express();
@@ -99,22 +100,32 @@ app.get("/more-events/:id", (req, res) => {
     res.send(result);
   });
 });
-app.put("/event", (req, res) => {
-  const name = req.body[0].username;
+app.post("/event", (req, res) => {
+  // const name = req.body[0].username;
   const eventname = req.body[0].selection;
   console.log(req.body[0]);
-  Register.updateOne(
-    { username: name },
-    {
-      $set: {
-        event: req.body[0].selection,
-      },
-    }
-  ).then((result) => {
-    console.log(result)
-    res.send(result);
+  const userEvents = new UserEvent({
+    leader: req.body[0].Cname,
+    username: req.body[0].username,
+    category: eventname,
+    collegeId: req.body[0].id,
+    player1: req.body[0].player1,
+    player2: req.body[0].player2,
+    player3: req.body[0].player3,
+    player4: req.body[0].player4,
+    player5: req.body[0].player5,
   });
+  const userEvent = userEvents.save();
+  res.status(200).send("done");
 });
+
+app.get("/admin" , (req ,res )=> {
+  console.log(UserEvent.find())
+  UserEvent.find({}).then((result) => {
+    console.group(result);
+    res.send(result);
+  }) 
+})
 app.listen(port, () => {
   console.log(`Server is running on ${port}`);
 });
