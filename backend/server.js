@@ -17,12 +17,22 @@ app.use(cors("*"));
 app.use(express.urlencoded({ extended: true }));
 
 let data;
-
+app.get("/admin", (req, res) => {
+  UserEvent.find({})
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).send("Internal server error");
+    });
+  // res.send("Hello")
+});
 app.post("/login", (req, res) => {
   try {
     const name = req.body.username;
     const password = req.body.password;
-    console.log(`${name} and ${password}`);
+    // console.log(`${name} and ${password}`);
     Register.findOne({ username: name }).then((result) => {
       if (result === null) {
         res.send({ message: "failed" });
@@ -38,9 +48,6 @@ app.post("/login", (req, res) => {
   } catch (error) {
     res.status(400);
   }
-});
-app.get("/login", (req, res) => {
-  res.json(data);
 });
 app.post("/register", (req, res) => {
   try {
@@ -87,7 +94,7 @@ app.get("/:id", (req, res) => {
   let id = req.params.id;
   //console.log(id);
   Events.find({ id: id }).then((result) => {
-    console.log(result);
+    // console.log(result);
     res.send(result);
   });
   // res.send("I am reading paramerter" + req.params.id);
@@ -96,14 +103,17 @@ app.get("/more-events/:id", (req, res) => {
   let name = req.params.id;
   // console.log(req.params)
   MoreEvents.find({ category: name }).then((result) => {
-    console.log(result);
+    // console.log(result);
     res.send(result);
   });
+});
+app.get("/login", (req, res) => {
+  res.json(data);
 });
 app.post("/event", (req, res) => {
   // const name = req.body[0].username;
   const eventname = req.body[0].selection;
-  console.log(req.body[0]);
+  // console.log(req.body[0]);
   const userEvents = new UserEvent({
     leader: req.body[0].Cname,
     username: req.body[0].username,
@@ -119,13 +129,8 @@ app.post("/event", (req, res) => {
   res.status(200).send("done");
 });
 
-app.get("/admin" , (req ,res )=> {
-  console.log(UserEvent.find())
-  UserEvent.find({}).then((result) => {
-    console.group(result);
-    res.send(result);
-  }) 
-})
+
+
 app.listen(port, () => {
   console.log(`Server is running on ${port}`);
 });
