@@ -22,7 +22,7 @@ const Teacher = () => {
   }, []);
 
   return (
-    <div className="flex bg-green">
+    <div className="flex teacher">
       <div className="sidebar justify-self-start  px-4 w-[300px] h-screen overflow-y-auto text-center bg-gray-800">
         <div className="text-gray-100 text-xl">
           <div className="p-2.5 mt-1 flex items-center">
