@@ -33,14 +33,14 @@ const MoreEvents = ({ eventId, eventName, setEventName, setUniqueEvent }) => {
                 >
                   <div class="card" style={{ width: "30rem", height: "auto" }}>
                     <div class="card-body">
-                      <p class="card-text">{val?.description}</p>
-                      <p className="card-text">{val?.description}</p>
-                      <h3>Rule: </h3>
+                      <p class="card-text-black">{val?.description}</p>
+                      
+                      {/* <h3>Rule: </h3>
                       <ul>
                         <li className="card-text">{val?.description}</li>
                         <li className="card-text">{val?.description}</li>
                         <li className="card-text">{val?.description}</li>
-                      </ul>
+                      </ul> */}
                       <button
                         onClick={(e) =>
                           handleOnSubmit(e, val._id, val.eventname)

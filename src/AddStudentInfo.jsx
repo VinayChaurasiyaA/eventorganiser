@@ -44,12 +44,14 @@ const AddStudentInfo = (data) => {
     axios.post("http://localhost:5000/adminevent", newData).then((result) => {
       console.log(result);
     });
-    axios.post("http://localhost:5000/admineventmore", anotherData).then((result) => {
-      console.log(result);
-      if (result.status === 200) {
-        alert("done");
-      }
-    });
+    axios
+      .post("http://localhost:5000/admineventmore", anotherData)
+      .then((result) => {
+        console.log(result);
+        if (result.status === 200) {
+          alert("done");
+        }
+      });
   };
 
   return (
@@ -64,7 +66,7 @@ const AddStudentInfo = (data) => {
                   id="form1"
                   type="text"
                   name="name"
-                  placeholder="Enter eventname like sport , dance , technical"
+                  placeholder="Enter eventname like Sport , Dance , Technical"
                   onChange={(e) => setEvent(e.target.value)}
                 />
                 <MDBInput

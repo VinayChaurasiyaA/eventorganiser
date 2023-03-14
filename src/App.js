@@ -18,11 +18,12 @@ import User from "./User";
 import MoreEvents from "./MoreEvents";
 import Event from "./Event";
 import AdminPanel from "./AdminPanel";
+import Teacher from "./Teacher";
 
 function App() {
   const [userDetails, setUserDetails] = useState({});
   const [eventId, setEventId] = useState();
-  const [eventName, setEventName] = useState();
+  const [eventName, setEventName] = useState('');
   const [uniqueEvent, setUniqueEvent] = useState();
 
   return (
@@ -44,6 +45,7 @@ function App() {
               />
             }
           />
+          <Route path="/teacher" exact element={<Teacher />} />
           <Route path="/topevents" exact element={<Topevents />} />
           <Route path="/signup" exact element={<Signup />} />
           <Route path="/prdesk" exact element={<PRDesk />} />

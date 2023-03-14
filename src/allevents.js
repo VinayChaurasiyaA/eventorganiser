@@ -20,15 +20,20 @@ function GroupExample({ setEventId, eventId, setEventName, eventName }) {
       setEventName(res.data[0].eventname);
     });
   }, []);
-  const handlOnClick = (id) => {
+  const handlOnClick = (e , eventname , id) => {
     // Todo
     // axios.get("http://localhost:5000/event-register").then((res) => {
     //   console.log()
     // })
+    setEventName(eventname)
     setEventId(id);
     console.log(id);
-    navigate(`/more-events/${eventName}`);
+    navigate(`/more-events/${eventname}`);
   };
+  // const image = (eventname) => {
+  //   console.log(eventname)
+  //   return `${eventname.toLowerCase().concat("event")}.jpg`;
+  // };
   return (
     <>
       {console.log(events.length)}
@@ -41,10 +46,7 @@ function GroupExample({ setEventId, eventId, setEventName, eventName }) {
                     {/* <Card.Img variant="top" src={`${event.eventname.toLowerCase()}event`.jpg} height="300px" /> */}
                     <Card.Img
                       variant="top"
-                      src={`./Images/${event.eventname
-                        .toLowerCase()
-                        .concat("event")
-                        .concat(".jpg")}`}
+                      src={sportevent}
                       height="300px"
                     />
                     {console.log(event.eventname.toLowerCase().concat("event"))}
@@ -64,7 +66,7 @@ function GroupExample({ setEventId, eventId, setEventName, eventName }) {
                       </Card.Text>
                       <Button
                         variant="primary"
-                        onClick={() => handlOnClick(event.id)}
+                        onClick={(e) => handlOnClick(e , event.eventname , event.id)}
                       >
                         ENROLL
                       </Button>
