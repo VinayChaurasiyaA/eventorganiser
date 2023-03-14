@@ -48,9 +48,6 @@ const AddStudentInfo = (data) => {
       .post("http://localhost:5000/admineventmore", anotherData)
       .then((result) => {
         console.log(result);
-        if (result.status === 200) {
-          alert("done");
-        }
       });
   };
 
