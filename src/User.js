@@ -10,8 +10,8 @@ const User = ({ userDetails }) => {
 
   useEffect(() => {
     axios.get(`http://localhost:5000/${userDetails?.username}`).then((result) => {
-      console.log(result);
-      // getData(result);
+      // console.log(result.data);
+      getData(result.data);
     })
   } , []);
   return (
