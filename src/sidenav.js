@@ -17,10 +17,10 @@ export default function Sidenav() {
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className='navi1'>
                             <NavLink className="navlink" to="/about us">About us</NavLink>
-                            <NavLink className="navlink" to="/topevents">Top Events</NavLink>
-                            <NavLink className="navlink" to="/allevents">All Events</NavLink>
-                            <NavLink className="navlink" to="/prdesk" >PR Desk</NavLink>
-                            <NavLink className="navlink" to="/prdesk" >Result</NavLink>
+                            <NavLink   className="navlink" to="/topevents">Top Events</NavLink>
+                            <NavLink  className="navlink" to="/allevents">All Events</NavLink>
+                            <NavLink  className="navlink" to="/prdesk" >PR Desk</NavLink>
+                            <NavLink   className="navlink" to="/prdesk" >Result</NavLink>
                         </Nav>
                         <Nav className='navi2'>
                             <NavLink className="navlink" to="/signup">Signup</NavLink>
