@@ -1,7 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
 import { NavLink } from "react-bootstrap";
-
+import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 export default function Signup() {
   const [input, setInput] = useState({
     firstname: "",
@@ -17,6 +18,7 @@ export default function Signup() {
     password: "",
     cpassword: "",
   });
+  const navigate = useNavigate();
   const handleChange = (event) => {
     const { name, value } = event.target;
     setInput((preInput) => {
@@ -27,39 +29,6 @@ export default function Signup() {
     });
   };
   const submitToBackend = (e) => {
-    // e.preventDefault();
-    // fetch("http://localhost:5000/register", {
-    //   method: "POST",
-    //   crossDomain: true,
-    //   headers: {
-    //     "Content-Type": "applicaion/json",
-    //     Accept: "applicaion/json",
-    //     "Access-Control-Allow-Origin": "*",
-    //   },
-    //   body: JSON.stringify({
-    //     firstname: input.firstname,
-    //     date: input.date,
-    //     gender: input.gender,
-    //     contact: input.contact,
-    //     email: input.email,
-    //     address: input.address,
-    //     collegename: input.collegename,
-    //     id: input.id,
-    //     year: input.year,
-    //     username: input.username,
-    //     password: input.password,
-    //     cpassword: input.cpassword,
-    //   }),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data, "userRegister");
-    //     if (data.status === "ok") {
-    //       alert("Registertation Succesful");
-    //     } else {
-    //       alert("SomeThing went wrong");
-    //     }
-    //   });
     e.preventDefault();
     const newRegistration = {
       firstname: input.firstname,
@@ -76,23 +45,14 @@ export default function Signup() {
       cpassword: input.cpassword,
     };
     axios
-      .post("http://localhost:5000/register", newRegistration, 
-      // {
-      //   // headers: {
-      //   //   "Content-Type": "application/json",
-      //   //   Accept: "application/json",
-      //   // },
-      // }
-      )
-      // .then((result) => result.json())
-      // .then((data) => {
-      //   console.log(data, "userRegister");
-      //   if (data.status === "ok") {
-      //     alert("Registertation Succesful");
-      //   } else {
-      //     alert("SomeThing went wrong");
-      //   }
-      // });
+      .post("http://localhost:5000/register", newRegistration)
+      .then((res) => {
+        console.log(res);
+        if (res.data === "ok") {
+          alert("registration done");
+          navigate("/");
+        }
+      });
   };
   return (
     <>

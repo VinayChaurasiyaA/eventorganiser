@@ -3,14 +3,13 @@ import loginpic from "./Images/loginpic.png";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
-export default function Login({setUserDetails}) {
+export default function Login({ setUserDetails }) {
   const navigate = useNavigate();
   const [input, setInput] = useState({
     username: "",
     password: "",
   });
   const handleChange = (event) => {
-    
     // const { name, value } = event.target;
     setInput(() => ({
       ...input,
@@ -20,14 +19,23 @@ export default function Login({setUserDetails}) {
     }));
     // setInput()
   };
-  const submitButton =  (e) => {
+  const submitButton = (e) => {
     e.preventDefault();
-  //  console.log(input);
-    const user = axios.post("http://localhost:5000/login", input).then(res => {
-    //  console.log(res.data.result);
-      setUserDetails(res.data.result);
-      navigate("/user")
-    })
+    //  console.log(input);
+    const user = axios
+      .post("http://localhost:5000/login", input)
+      .then((res) => {
+        //  console.log(res.data.result);
+        console.log(res.data.message);
+        if (res.data.message !== "failed") {
+          alert("Login");
+          setUserDetails(res.data.result);
+          navigate("/user");
+        } else {
+          alert("No data found , invalid username and password");
+          navigate("/login");
+        }
+      });
     //console.log(user);
   };
   return (
