@@ -22,11 +22,12 @@ export default function Login({ setUserDetails }) {
   const submitButton = (e) => {
     e.preventDefault();
     //  console.log(input);
+
     const user = axios
       .post("http://localhost:5000/login", input)
       .then((res) => {
         //  console.log(res.data.result);
-        console.log(res.data.message);
+        // console.log(res.data.message);
         if (res.data.message !== "failed") {
           alert("Login");
           setUserDetails(res.data.result);
@@ -36,6 +37,7 @@ export default function Login({ setUserDetails }) {
           navigate("/login");
         }
       });
+
     //console.log(user);
   };
   return (

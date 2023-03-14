@@ -28,6 +28,17 @@ app.get("/admin", (req, res) => {
     });
   // res.send("Hello")
 });
+app.get("/:user" , (req ,res) => {
+  try {
+    let username = req.params.user;
+    UserEvent.find({username}).then((result) => {
+      console.log(result)
+      res.send(result);
+    })
+  } catch (error) {
+    console.log(error)
+  }
+})
 app.post("/login", (req, res) => {
   try {
     const name = req.body.username;
@@ -49,6 +60,7 @@ app.post("/login", (req, res) => {
     res.status(400);
   }
 });
+
 app.post("/admineventmore", (req, res) => {
   console.log(req.body);
   try {
@@ -58,13 +70,17 @@ app.post("/admineventmore", (req, res) => {
       description: req.body[0].description,
     });
     const moreEvents = adminevent.save();
+    res.status(200).send("ok");
   } catch (error) {
     console.log(error);
   }
 });
+
 app.post("/adminevent", (req, res) => {
   try {
-    console.log(req.body);
+    const isNewEvent = Events.isThisPresent(req.body[0].eventname);
+    if (!isNewEvent)
+      return res.send({ success: false, message: "Already created" });
     const event = new Events({
       eventname: req.body[0].eventname,
       date: req.body[0].date,
@@ -76,6 +92,7 @@ app.post("/adminevent", (req, res) => {
     console.log(error);
   }
 });
+
 app.post("/register", (req, res) => {
   try {
     const password = req.body.password;
@@ -126,6 +143,7 @@ app.get("/:id", (req, res) => {
   });
   // res.send("I am reading paramerter" + req.params.id);
 });
+
 app.get("/more-events/:id", (req, res) => {
   let name = req.params.id;
   // console.log(req.params)

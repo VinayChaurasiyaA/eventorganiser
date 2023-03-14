@@ -1,27 +1,34 @@
-import React, { useState , useEffect} from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 import { Link } from "react-router-dom";
-import axios from 'axios'
-import Userprofile from "./Userprofile";
-const User = ({ userDetails }) => {
+import Details from "./Details";
+import AddStudentInfo from "./AddStudentInfo";
+
+import { MDBContainer } from "mdbreact";
+
+
+const Teacher = () => {
   const [addInfo, setAddInfo] = useState(false);
   const [myDetails, setMyDetails] = useState(true);
   const [changePass, setChangePass] = useState(false);
-  const [data, getData] = useState({});
-
+  const [data, getData] = useState([]);
   useEffect(() => {
-    axios.get(`http://localhost:5000/${userDetails?.username}`).then((result) => {
-      console.log(result);
-      // getData(result);
+    axios.get("http://localhost:5000/admin").then((res)=> {
+        console.log(res.data);
+        getData(res.data);
     })
-  } , []);
+  }, []);
+
   return (
-    <div className="flex allevents">
+    <div className="flex bg-green">
       <div className="sidebar justify-self-start  px-4 w-[300px] h-screen overflow-y-auto text-center bg-gray-800">
         <div className="text-gray-100 text-xl">
           <div className="p-2.5 mt-1 flex items-center">
             <i className="bi bi-app-indicator px-2 py-1 rounded-md bg-blue-600" />
             <h1 className="font-bold text-gray-200 text-[15px] ml-3">
-              Student Panel
+              Teacher Panel
             </h1>
           </div>
           <div className="my-2 bg-gray-400 h-[1px]" />
@@ -30,7 +37,7 @@ const User = ({ userDetails }) => {
               Name
             </span>
             <span className=" font-bold ml-1 text-[12px] bg-blue-500 px-4 py-1 rounded-full text-slate-100">
-              Student
+              Teacher
             </span>
           </div>
         </div>
@@ -47,6 +54,17 @@ const User = ({ userDetails }) => {
             Student details
           </span>
         </button>
+        <div
+          className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer bg-gray-700 hover:bg-green-500 text-black"
+          onClick={() => {
+            setAddInfo(true);
+            setMyDetails(false);
+          }}
+        >
+          <span className="text-[15px] ml-4 text-gray-200 font-bold">
+            Add Events
+          </span>
+        </div>
         <Link to="/">
           <div className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer bg-gray-500 hover:bg-red-400 text-black">
             <i className="bi bi-box-arrow-in-right" />
@@ -59,12 +77,14 @@ const User = ({ userDetails }) => {
 
       {myDetails && (
         <div>
-          {console.log(data)}
-          {<Userprofile userDetails={userDetails} data={data}/>}
+          {/* BOX 01 */}
+          {<Details data={data} />}
         </div>
       )}
+
+      {addInfo && <AddStudentInfo />}
     </div>
   );
 };
 
-export default User;
+export default Teacher;
