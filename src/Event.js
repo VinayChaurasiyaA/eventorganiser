@@ -75,11 +75,11 @@ const Event = ({ eventId, uniqueEvent, eventName }) => {
           <MDBRow className="d-flex justify-content-center align-items-center">
             <MDBCol lg="8">
               <MDBCard className="my-5 rounded-3" style={{ maxWidth: "600px" }}>
-                <MDBCardImage
+                {/* <MDBCardImage
                   src={`https://unsplash.com/s/photos/${data[0]?.eventname}-event`}
                   className="w-100 rounded-top"
                   alt="Sample photo"
-                />
+                /> */}
 
                 <MDBCardBody className="px-5">
                   <h3 className="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">
