@@ -17,7 +17,7 @@ function GroupExample({ setEventId, eventId, setEventName, eventName }) {
     axios.get("http://localhost:5000/allevents").then((res) => {
       console.log(res.data[0].eventname);
       setEvents(res.data);
-      setEventName(res.data[0].eventname);
+      setEventName(res?.data[0]?.eventname);
     });
   }, []);
   const handlOnClick = (e , eventname , id) => {

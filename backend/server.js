@@ -17,6 +17,16 @@ app.use(cors("*"));
 app.use(express.urlencoded({ extended: true }));
 
 let data;
+app.get("/allevents", (req, res) => {
+  try {
+    Events.find({}).then((result) => {
+      // console.log(result);
+      res.send(result);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
 app.get("/admin", (req, res) => {
   UserEvent.find({})
     .then((result) => {
@@ -28,17 +38,17 @@ app.get("/admin", (req, res) => {
     });
   // res.send("Hello")
 });
-app.get("/:user" , (req ,res) => {
+app.get("/:user", (req, res) => {
   try {
     let username = req.params.user;
-    UserEvent.find({username}).then((result) => {
-      console.log(result)
+    UserEvent.find({ username }).then((result) => {
+      console.log(result);
       res.send(result);
-    })
+    });
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-})
+});
 app.post("/login", (req, res) => {
   try {
     const name = req.body.username;
@@ -120,17 +130,6 @@ app.post("/register", (req, res) => {
     }
   } catch (error) {
     res.status(400).send(error);
-  }
-});
-
-app.get("/allevents", (req, res) => {
-  try {
-    Events.find({}).then((result) => {
-      // console.log(result);
-      res.send(result);
-    });
-  } catch (error) {
-    console.log(error);
   }
 });
 
