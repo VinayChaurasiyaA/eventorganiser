@@ -607,3 +607,11 @@ form .fields .input-field2 {
 .teacher{
   background-color: rgb(26, 173, 26);
 }
+.result {
+  width: 4rem;
+  height: 100px;
+}
+.congo { 
+  width: 100%;
+  height: 80px;
+}

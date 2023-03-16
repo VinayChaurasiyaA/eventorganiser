@@ -7,6 +7,7 @@ import Details from "./Details";
 import AddStudentInfo from "./AddStudentInfo";
 
 import { MDBContainer } from "mdbreact";
+import Cards from "./Cards";
 
 
 const Teacher = () => {
@@ -82,7 +83,7 @@ const Teacher = () => {
         </div>
       )}
 
-      {addInfo && <AddStudentInfo />}
+      {addInfo && <Cards data={data}/>}
     </div>
   );
 };

@@ -75,7 +75,7 @@ const AdminPanel = () => {
           }}
         >
           <span className="text-[15px] ml-4 text-gray-200 font-bold">
-            Add Info
+            Add Event
           </span>
         </div>
         <Link to="/">

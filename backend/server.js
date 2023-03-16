@@ -7,6 +7,7 @@ const Register = require("./models/registers");
 const Events = require("./models/events");
 const MoreEvents = require("./models/moreevents");
 const UserEvent = require("./models/userEvents");
+const Result = require("./models/result")
 
 const router = express.Router();
 const app = express();
@@ -17,6 +18,12 @@ app.use(cors("*"));
 app.use(express.urlencoded({ extended: true }));
 
 let data;
+app.get("/result", (req ,res) => {
+  Result.find({}).then(result => {
+    console.log(result);
+    res.send(result);
+  })
+})
 app.get("/allevents", (req, res) => {
   try {
     Events.find({}).then((result) => {
@@ -158,19 +165,25 @@ app.post("/event", (req, res) => {
   // const name = req.body[0].username;
   const eventname = req.body[0].selection;
   // console.log(req.body[0]);
-  const userEvents = new UserEvent({
-    leader: req.body[0].Cname,
-    username: req.body[0].username,
-    category: eventname,
-    collegeId: req.body[0].id,
-    player1: req.body[0].player1,
-    player2: req.body[0].player2,
-    player3: req.body[0].player3,
-    player4: req.body[0].player4,
-    player5: req.body[0].player5,
-  });
-  const userEvent = userEvents.save();
-  res.status(200).send("done");
+  const username = req.body[0].username;
+  const check = Register.findOne({ username: username });
+  if (check === null) {
+    res.status(404).send("invalid username");
+  } else {
+    const userEvents = new UserEvent({
+      leader: req.body[0].Cname,
+      username: req.body[0].username,
+      category: eventname,
+      collegeId: req.body[0].id,
+      player1: req.body[0].player1,
+      player2: req.body[0].player2,
+      player3: req.body[0].player3,
+      player4: req.body[0].player4,
+      player5: req.body[0].player5,
+    });
+    const userEvent = userEvents.save();
+    res.status(200).send("done");
+  }
 });
 
 app.listen(port, () => {
