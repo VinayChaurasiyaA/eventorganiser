@@ -1,6 +1,15 @@
-import React from "react";
+import axios from "axios";
+import React , {useEffect} from "react";
+import { useState } from "react";
 
 const Cards = ({data}) => {
+  const [eventdata , setEventData] = useState({});
+  useEffect(() => {
+    axios.get("http://localhost:5000/all").then(res => {
+      console.log(res);
+      setEventData(res.data);
+    })
+  } , []);
   return (
     <div className="flex mt-8 ml-24 justify-center w-3/4 h-auto flex-wrap ">
       {/* BOX 01 */}
@@ -21,7 +30,7 @@ const Cards = ({data}) => {
         </div>
         <div className="bg-yellow-200 h-3/4 flex justify-center items-center">
           <p className=" font-bold text-6xl text-yellow-600">
-            {14}
+            {eventdata?.length + 1}
           </p>
         </div>
       </div>

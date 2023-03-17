@@ -33,14 +33,20 @@ export default function Topevents({setEventId, eventId, setEventName, eventName}
               <div class="col-md-4">
                 <img src={sport} class="card-img" alt="..." />
               </div>
-              <div class="col-md-8">
+              <div class="col-md-4">
                 <div class="card-body">
-                  <h5 class="card-title">{data?.eventname}</h5>
-                  <p class="card-text">
+                  <h3 class="card-title">{data?.eventname}</h3>
+                  <h2 class="card-text">
                     {data?.description}
+                  </h2>
+                  <p className="card-title">
+                    {data?.place}
                   </p>
                   <p className="card-text">
-                    {data?.place}
+                    {data?.date}
+                  </p>
+                  <p className="card-title">
+                    You can enroll in the event by clicking on the below button
                   </p>
                   <Button
                         variant="primary"
@@ -60,14 +66,20 @@ export default function Topevents({setEventId, eventId, setEventName, eventName}
               <div class="col-md-4">
                 <img src={sport} class="card-img" alt="..." />
               </div>
-              <div class="col-md-8">
+              <div class="col-md-4">
                 <div class="card-body">
-                  <h5 class="card-title">{another?.eventname}</h5>
+                  <h2 class="card-title">{another?.eventname}</h2>
                   <p class="card-text">
                     {another?.description}
                   </p>
-                  <p className="card-text">
+                  <p className="card-title">
                     {another?.place}
+                  </p>
+                  <p className="card-text">
+                    {data?.date}
+                  </p>
+                  <p className="card-title">
+                    You can enroll in the event by clicking on the below button
                   </p>
                   <Button
                         variant="primary"

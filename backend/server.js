@@ -18,6 +18,12 @@ app.use(cors("*"));
 app.use(express.urlencoded({ extended: true }));
 
 let data;
+app.get("/all" , (req ,res) => {
+  MoreEvents.find({}).then(result  => {
+    console.log(result);
+    res.send(result);
+  })
+})
 app.get("/result", (req ,res) => {
   Result.find({}).then(result => {
     console.log(result);
