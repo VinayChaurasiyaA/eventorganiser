@@ -73,7 +73,10 @@ app.post("/login", (req, res) => {
       } else if (result.password === password) {
         if (result.role === "Teacher") {
           res.send({ message: "success", result: result.role });
-        } else {
+        } else if(result.role === "Admin") {
+          res.send({message : "success" , result : result.role});
+        } 
+        else {
           res.send({ message: "success", result: result });
         }
       } else {
