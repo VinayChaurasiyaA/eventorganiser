@@ -63,7 +63,7 @@ const Teacher = () => {
           }}
         >
           <span className="text-[15px] ml-4 text-gray-200 font-bold">
-            Add Events
+            Event Stats
           </span>
         </div>
         <Link to="/">

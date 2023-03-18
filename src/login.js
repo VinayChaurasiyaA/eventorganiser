@@ -28,11 +28,14 @@ export default function Login({ setUserDetails }) {
       .then((res) => {
         //  console.log(res.data.result);
         // console.log(res.data.message);
-        if (res.data.message !== "failed") {
+        if (res.data.message !== "failed" && res.data.result !== "Teacher") {
           alert("Login");
           setUserDetails(res.data.result);
           navigate("/user");
+        } else if (res.data.result === "Teacher") {
+          navigate("/teacher");
         } else {
+          console.log(res.data);
           alert("No data found , invalid username and password");
           navigate("/login");
         }

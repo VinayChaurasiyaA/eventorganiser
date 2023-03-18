@@ -55,10 +55,11 @@ const Event = ({ eventId, uniqueEvent, eventName }) => {
       console.log(result.status);
       if (result.status === 200) {
         alert("Done registration");
-         navigate("/");
+        navigate("/");
       }
       else {
-        console.log(result)
+        alert("Username invalid")
+        navigate("/signup")
       }
     });
     console.log(data);

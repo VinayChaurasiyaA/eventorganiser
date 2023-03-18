@@ -12,6 +12,7 @@ const studentSchema = new mongoose.Schema({
   username: String,
   password: String,
   cpassword: String,
+  role : String,
   event: {
     type : String ,
     default : null

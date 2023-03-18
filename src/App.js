@@ -20,6 +20,7 @@ import Event from "./Event";
 import AdminPanel from "./AdminPanel";
 import Teacher from "./Teacher";
 import Result from "./Result";
+import Controller from './Controller'
 
 function App() {
   const [userDetails, setUserDetails] = useState({});
@@ -46,6 +47,7 @@ function App() {
               />
             }
           />
+          <Route path="/admin" exact element={<Controller />} />
           <Route path="/teacher" exact element={<Teacher />} />
           <Route
             path="/topevents"
