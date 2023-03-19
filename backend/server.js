@@ -18,6 +18,16 @@ app.use(cors("*"));
 app.use(express.urlencoded({ extended: true }));
 
 let data;
+
+app.delete("/event-remove/:id" , (req ,res) => {
+  const ids = req.params.id
+  // console.log(ids);
+  // res.send(ids);
+  MoreEvents.findByIdAndDelete({_id : ids}).then(result => {
+    console.log("done");
+    res.send({message : "Success" , result : result});
+  }) 
+})
 app.get("/all", (req, res) => {
   MoreEvents.find({}).then((result) => {
     console.log(result);

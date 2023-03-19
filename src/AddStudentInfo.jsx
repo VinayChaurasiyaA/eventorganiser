@@ -19,8 +19,27 @@ const AddStudentInfo = (data) => {
   const [description, setDescription] = useState("");
   const [place, setPlace] = useState("");
   const [eventType, setEventType] = useState("");
+
+  const [eventData, setEventData] = useState({});
   const navigate = useNavigate();
 
+  useEffect(() => {
+    axios.get("http://localhost:5000/all").then((res) => {
+      console.log(res.data);
+      setEventData(res.data);
+    });
+  }, []);
+  const handleOnClick = (e, _id) => {
+    e.preventDefault();
+    console.log("clicked on : " + _id);
+    axios.delete(`http://localhost:5000/event-remove/${_id}`).then((result) => {
+      console.log(result?.data?.messsage);
+      console.log(result.data?.messsage);
+      if (result.data.messsage === "Success") {
+        alert("Done, event deleted");
+      }
+    });
+  };
   const handleOnSubmit = (e) => {
     e.preventDefault();
     const newData = [
@@ -53,7 +72,8 @@ const AddStudentInfo = (data) => {
 
   return (
     <>
-      <MDBContainer fluid>
+      {/* <MDBContainer > */}
+      <div className="width-inc">
         <MDBRow className="d-flex justify-content-center align-items-center">
           <MDBCol lg="8">
             <MDBCard className="my-2 rounded-3" style={{ maxWidth: "600px" }}>
@@ -98,44 +118,6 @@ const AddStudentInfo = (data) => {
                   placeholder="What is the event like : basketball, volleyball"
                   onChange={(e) => setEventType(e.target.value)}
                 />
-                {/* <MDBInput
-                  wrapperClass="mb-4"
-                  id="form1"
-                  type="text"
-                  name="name"
-                  placeholder="Enter your Player4 name"
-                  onChange={(e) => setPlayerName4(e.target.value)}
-                />
-                <MDBInput
-                  wrapperClass="mb-4"
-                  id="form1"
-                  type="text"
-                  name="name"
-                  placeholder="Enter your Player5 name"
-                  onChange={(e) => setPlayerName5(e.target.value)}
-                />
-                <MDBInput
-                  wrapperClass="mb-4"
-                  id="form1"
-                  type="text"
-                  name="name"
-                  // placeholder="Enter your Player5 name"
-                //   value={eventName}
-                  // selection={eventName}
-                  // onChange={(e) => setSelection(e.target.value)}
-                />
-                <MDBRow>
-                  <MDBCol className="pt-2" md="6">
-                    <MDBInput
-                      wrapperClass="mb-4"
-                      label="CollegeId code"
-                      id="form3"
-                      type="text"
-                      name="collegeId"
-                      onChange={(e) => setId(e.target.value)}
-                    />
-                  </MDBCol>
-                </MDBRow> */}
 
                 <MDBBtn
                   color="success"
@@ -149,7 +131,78 @@ const AddStudentInfo = (data) => {
             </MDBCard>
           </MDBCol>
         </MDBRow>
-      </MDBContainer>
+      </div>
+      {/* </MDBContainer> */}
+      {/* <div></div> */}
+      <div class="relative overflow-x-auto">
+        <table class=" w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              {/* <th scope="col" class="px-6 py-3">
+                Description
+              </th> */}
+              <th scope="col" class="px-6 py-3">
+                Category
+              </th>
+              <th scope="col" class="px-6 py-3">
+                eventname
+              </th>
+              <th scope="col-2" class="px-6 py-3">
+                Delete
+              </th>
+              {/* <th scope="col" class="px-6 py-3">
+                player1
+              </th>
+              <th scope="col" class="px-6 py-3">
+                player2
+              </th>
+              <th scope="col" class="px-6 py-3">
+                player3
+              </th>
+              <th scope="col" class="px-6 py-3">
+                player4
+              </th>
+              <th scope="col" class="px-6 py-3">
+                player5
+              </th> */}
+            </tr>
+          </thead>
+          <tbody>
+            {eventData.length > 0
+              ? eventData.map((val) => (
+                  <>
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      {/* <th
+                        scope="row"
+                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black"
+                      >
+                        {val?.description.slice(0 , 5)}
+                      </th> */}
+                      <td className="px-6 py-4 dark:text-black">
+                        {val?.category}
+                      </td>
+                      <td class="px-6 py-4 dark:text-black">
+                        {val?.eventname}
+                      </td>
+                      <td class="px-6 py-4 dark:text-black">
+                        <button
+                          className="border border-danger"
+                          onClick={(e) => handleOnClick(e, val?._id)}
+                        >
+                          Delete
+                        </button>
+                      </td>
+                      {/* <td class="px-6 py-4 dark:text-black">{val?.player2}</td>
+                      <td class="px-6 py-4 dark:text-black">{val?.player3}</td>
+                      <td class="px-6 py-4 dark:text-black">{val?.player4}</td>
+                      <td class="px-6 py-4 dark:text-black">{val?.player5}</td> */}
+                    </tr>
+                  </>
+                ))
+              : "No data entried"}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 };
