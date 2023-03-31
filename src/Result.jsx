@@ -5,7 +5,7 @@ import ConfettiExplosion from "react-confetti-explosion";
 const Result = () => {
   const [info, setInfo] = useState({});
   useEffect(() => {
-    axios.get("http://localhost:5000/result").then((result) => {
+    axios.get("https://events-yv65.onrender.com/result").then((result) => {
       console.log(result.data);
       setInfo(result.data);
     });

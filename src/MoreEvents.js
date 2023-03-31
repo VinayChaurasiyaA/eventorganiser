@@ -6,7 +6,7 @@ const MoreEvents = ({ eventId, eventName, setEventName, setUniqueEvent }) => {
   const [data, setData] = useState({});
   const navigate = useNavigate();
   useEffect(() => {
-    axios.get(`http://localhost:5000/more-events/${eventName}`).then((res) => {
+    axios.get(`https://events-yv65.onrender.com/more-events/${eventName}`).then((res) => {
       console.log(res.data);
       setData(res.data);
     });

@@ -27,7 +27,7 @@ const Event = ({ eventId, uniqueEvent, eventName }) => {
 
   const [data, setData] = useState({});
   useEffect(() => {
-    axios.get(`http://localhost:5000/${eventId}`).then((res) => {
+    axios.get(`https://events-yv65.onrender.com/${eventId}`).then((res) => {
       console.log(res.data);
       setData(res.data);
     });
@@ -51,7 +51,7 @@ const Event = ({ eventId, uniqueEvent, eventName }) => {
       },
     ];
     console.log(data);
-    axios.post("http://localhost:5000/event", data).then((result) => {
+    axios.post("https://events-yv65.onrender.com/event", data).then((result) => {
       console.log(result.status);
       if (result.status === 200) {
         alert("Done registration");

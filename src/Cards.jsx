@@ -5,7 +5,7 @@ import { useState } from "react";
 const Cards = ({data}) => {
   const [eventdata , setEventData] = useState({});
   useEffect(() => {
-    axios.get("http://localhost:5000/all").then(res => {
+    axios.get("https://events-yv65.onrender.com/all").then(res => {
       console.log(res);
       setEventData(res.data);
     })

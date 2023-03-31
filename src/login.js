@@ -24,7 +24,7 @@ export default function Login({ setUserDetails }) {
     //  console.log(input);
 
     const user = axios
-      .post("http://localhost:5000/login", input)
+      .post("https://events-yv65.onrender.com/login", input)
       .then((res) => {
         //  console.log(res.data.result);
         // console.log(res.data.message);

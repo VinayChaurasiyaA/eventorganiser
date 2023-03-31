@@ -9,7 +9,7 @@ const User = ({ userDetails }) => {
   const [data, getData] = useState({});
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/${userDetails?.username}`).then((result) => {
+    axios.get(`https://events-yv65.onrender.com/${userDetails?.username}`).then((result) => {
       // console.log(result.data);
       getData(result.data);
     })

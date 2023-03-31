@@ -14,7 +14,7 @@ const AdminPanel = () => {
   const [data, getData] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/admin").then((res)=> {
+    axios.get("https://events-yv65.onrender.com/admin").then((res)=> {
         console.log(res.data);
         getData(res.data);
     })

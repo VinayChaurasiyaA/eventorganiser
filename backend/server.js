@@ -34,6 +34,17 @@ app.get("/all", (req, res) => {
     res.send(result);
   });
 });
+app.post("/result" , (req  , res) => {
+  console.log(req.body[0])
+  const result = new Result({
+    eventname : req.body[0].eventname,
+    firstwinner : req.body[0].firstwinner,
+    secondwinner : req.body[0].secondwinner,
+    thirdwinner : req.body[0].thirdwinner,
+  });
+  const results = result.save();
+  res.status(200).send("ok");
+})
 app.get("/result", (req, res) => {
   Result.find({}).then((result) => {
     console.log(result);

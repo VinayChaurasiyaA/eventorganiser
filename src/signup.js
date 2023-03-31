@@ -45,7 +45,7 @@ export default function Signup() {
       cpassword: input.cpassword,
     };
     axios
-      .post("http://localhost:5000/register", newRegistration)
+      .post("https://events-yv65.onrender.com/register", newRegistration)
       .then((res) => {
         console.log(res);
         if (res.data === "ok") {

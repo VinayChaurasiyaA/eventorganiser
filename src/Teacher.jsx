@@ -8,6 +8,7 @@ import AddStudentInfo from "./AddStudentInfo";
 
 import { MDBContainer } from "mdbreact";
 import Cards from "./Cards";
+import Results from "./Results";
 
 
 const Teacher = () => {
@@ -16,7 +17,7 @@ const Teacher = () => {
   const [changePass, setChangePass] = useState(false);
   const [data, getData] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:5000/admin").then((res)=> {
+    axios.get("https://events-yv65.onrender.com/admin").then((res)=> {
         console.log(res.data);
         getData(res.data);
     })
@@ -66,6 +67,19 @@ const Teacher = () => {
             Event Stats
           </span>
         </div>
+
+        <div
+          className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer bg-gray-700 hover:bg-green-500 text-black"
+          onClick={() => {
+            setChangePass(true);
+            setAddInfo(false);
+            setMyDetails(false);
+          }}
+        >
+          <span className="text-[15px] ml-4 text-gray-200 font-bold">
+            Add Result
+          </span>
+        </div>
         <Link to="/">
           <div className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer bg-gray-500 hover:bg-red-400 text-black">
             <i className="bi bi-box-arrow-in-right" />
@@ -84,6 +98,7 @@ const Teacher = () => {
       )}
 
       {addInfo && <Cards data={data}/>}
+      {changePass && <Results />}
     </div>
   );
 };

@@ -8,7 +8,7 @@ export default function Topevents({setEventId, eventId, setEventName, eventName}
   const [data, setData] = useState();
   const [another, setAnother] = useState();
   useEffect(() => {
-    axios.get("http://localhost:5000/allevents").then((result) => {
+    axios.get("https://events-yv65.onrender.com/allevents").then((result) => {
       // console.log(result.data);
       setData(result.data[0]);
       setAnother(result.data[1]);

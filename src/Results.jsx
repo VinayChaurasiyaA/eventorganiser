@@ -13,38 +13,37 @@ import {
   MDBCol,
   MDBInput,
 } from "mdb-react-ui-kit";
-
-const AddDetails = () => {
+const Results = () => {
   const [event, setEvent] = useState("");
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
-  const [place, setPlace] = useState("");
+
   const [eventType, setEventType] = useState("");
-  const [confirm , setConfirm] = useState("");
+
   const navigate = useNavigate();
+
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    const newData = {
-      username : description,
-      password : place , 
-      cpassword : confirm,
-      role : eventType ,
-      firstname : event
-    };
-    // console.log(newData , anotherData)
-    //todo
-    // on handlesubmit the data will go in 2 type of slabs which are 1 event and another more event
-    axios.post("https://events-yv65.onrender.com/register", newData).then((result) => {
+    const data = [
+      {
+        eventname: event,
+        firstwinner: date,
+        secondwinner: description,
+        thirdwinner: eventType,
+      },
+    ];
+    console.log(data);
+    axios.post("https://events-yv65.onrender.com00/result", data).then((result) => {
       console.log(result);
-      if(result.data === "ok") {
-        alert("Done registration");
+      if (result.status === 200) {
+        alert("done, result added");
       }
     });
   };
   return (
     <>
       <MDBContainer fluid>
-        <MDBRow className="d-flex justify-content-center align-items-center width-inc" >
+        <MDBRow className="d-flex justify-content-center align-items-center width-inc">
           <MDBCol lg="8">
             <MDBCard className="my-2 rounded-3">
               <MDBCardBody className="px-2">
@@ -52,48 +51,48 @@ const AddDetails = () => {
                   wrapperClass="mb-4"
                   id="form1"
                   type="text"
-                  name="name"
-                  placeholder="Enter Name"
+                  name="eventname"
+                  placeholder="Enter event name"
                   onChange={(e) => setEvent(e.target.value)}
                 />
                 <MDBInput
                   wrapperClass="mb-4"
                   id="form1"
                   type="text"
-                  name="date"
+                  name="firstwinner"
                   onChange={(e) => setDate(e.target.value)}
-                  placeholder="date"
+                  placeholder="firstwinner"
                 />
                 <MDBInput
                   wrapperClass="mb-4"
                   id="form1"
                   type="text"
-                  placeholder="username"
-                  name="username"
+                  placeholder="secondwinner"
+                  name="secondwinner"
                   onChange={(e) => setDescription(e.target.value)}
                 />
-                <MDBInput
-                  wrapperClass="mb-4"
-                  id="form1"
-                  type="password"
-                  name="password"
-                  placeholder="password"
-                  onChange={(e) => setPlace(e.target.value)}
-                />
-                <MDBInput
-                  wrapperClass="mb-4"
-                  id="form1"
-                  type="password"
-                  name="password"
-                  placeholder="Confirm password"
-                  onChange={(e) => setConfirm(e.target.value)}
-                />
+                {/* <MDBInput
+                wrapperClass="mb-4"
+                id="form1"
+                type="password"
+                name="password"
+                placeholder="password"
+                onChange={(e) => setPlace(e.target.value)}
+              />
+              <MDBInput
+                wrapperClass="mb-4"
+                id="form1"
+                type="password"
+                name="password"
+                placeholder="Confirm password"
+                onChange={(e) => setConfirm(e.target.value)}
+              /> */}
                 <MDBInput
                   wrapperClass="mb-4"
                   id="form1"
                   type="text"
-                  name="role"
-                  placeholder="Role like Teacher , Student"
+                  name="thirdwinner"
+                  placeholder="thirdwinner"
                   onChange={(e) => setEventType(e.target.value)}
                 />
                 <MDBBtn
@@ -113,4 +112,11 @@ const AddDetails = () => {
   );
 };
 
-export default AddDetails;
+// const adminevent = new MoreEvents({
+//     eventname: req.body[0].category,
+//     category: req.body[0].eventname,
+//     description: req.body[0].description,
+//   });
+//   const moreEvents = adminevent.save();
+//   res.status(200).send("ok");
+export default Results;

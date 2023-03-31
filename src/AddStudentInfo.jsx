@@ -24,7 +24,7 @@ const AddStudentInfo = (data) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:5000/all").then((res) => {
+    axios.get("https://events-yv65.onrender.com/all").then((res) => {
       console.log(res.data);
       setEventData(res.data);
     });
@@ -32,7 +32,7 @@ const AddStudentInfo = (data) => {
   const handleOnClick = (e, _id) => {
     e.preventDefault();
     console.log("clicked on : " + _id);
-    axios.delete(`http://localhost:5000/event-remove/${_id}`).then((result) => {
+    axios.delete(`https://events-yv65.onrender.com/event-remove/${_id}`).then((result) => {
       console.log(result?.data?.messsage);
       console.log(result.data?.messsage);
       if (result.data.messsage === "Success") {
@@ -60,11 +60,11 @@ const AddStudentInfo = (data) => {
     // console.log(newData , anotherData)
     //todo
     // on handlesubmit the data will go in 2 type of slabs which are 1 event and another more event
-    axios.post("http://localhost:5000/adminevent", newData).then((result) => {
+    axios.post("https://events-yv65.onrender.com/adminevent", newData).then((result) => {
       console.log(result);
     });
     axios
-      .post("http://localhost:5000/admineventmore", anotherData)
+      .post("https://events-yv65.onrender.com/admineventmore", anotherData)
       .then((result) => {
         console.log(result);
       });

@@ -14,7 +14,7 @@ function GroupExample({ setEventId, eventId, setEventName, eventName }) {
   const [events, setEvents] = useState({});
   const navigate = useNavigate();
   useEffect(() => {
-    axios.get("http://localhost:5000/allevents").then((res) => {
+    axios.get("https://events-yv65.onrender.com/allevents").then((res) => {
       console.log(res.data[0].eventname);
       setEvents(res.data);
       setEventName(res?.data[0]?.eventname);
