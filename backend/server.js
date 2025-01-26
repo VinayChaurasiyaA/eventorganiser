@@ -9,7 +9,8 @@ const MoreEvents = require("./models/moreevents");
 const UserEvent = require("./models/userEvents");
 const Result = require("./models/result");
 
-const router = express.Router();
+// create a controller and router for the events
+
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -18,33 +19,36 @@ app.use(cors("*"));
 app.use(express.urlencoded({ extended: true }));
 
 let data;
-
-app.delete("/event-remove/:id" , (req ,res) => {
-  const ids = req.params.id
+// TODO: how this all should look like
+// below events would be coming from ./routes/events.js
+// app.use(events);
+app.delete("/event-remove/:id", (req, res) => {
+  const ids = req.params.id;
   // console.log(ids);
   // res.send(ids);
-  MoreEvents.findByIdAndDelete({_id : ids}).then(result => {
+  MoreEvents.findByIdAndDelete({ _id: ids }).then((result) => {
     console.log("done");
-    res.send({message : "Success" , result : result});
-  }) 
-})
+    res.send({ message: "Success", result: result });
+  });
+});
+
 app.get("/all", (req, res) => {
   MoreEvents.find({}).then((result) => {
     console.log(result);
     res.send(result);
   });
 });
-app.post("/result" , (req  , res) => {
-  console.log(req.body[0])
+app.post("/result", (req, res) => {
+  console.log(req.body[0]);
   const result = new Result({
-    eventname : req.body[0].eventname,
-    firstwinner : req.body[0].firstwinner,
-    secondwinner : req.body[0].secondwinner,
-    thirdwinner : req.body[0].thirdwinner,
+    eventname: req.body[0].eventname,
+    firstwinner: req.body[0].firstwinner,
+    secondwinner: req.body[0].secondwinner,
+    thirdwinner: req.body[0].thirdwinner,
   });
   result.save();
   res.status(200).send("ok");
-})
+});
 app.get("/result", (req, res) => {
   Result.find({}).then((result) => {
     console.log(result);
@@ -94,10 +98,9 @@ app.post("/login", (req, res) => {
       } else if (result.password === password) {
         if (result.role === "Teacher") {
           res.send({ message: "success", result: result.role });
-        } else if(result.role === "Admin") {
-          res.send({message : "success" , result : result.role});
-        } 
-        else {
+        } else if (result.role === "Admin") {
+          res.send({ message: "success", result: result.role });
+        } else {
           res.send({ message: "success", result: result });
         }
       } else {
@@ -135,7 +138,7 @@ app.post("/adminevent", (req, res) => {
       place: req.body[0].place,
       description: req.body[0].description,
     });
-     event.save();
+    event.save();
   } catch (error) {
     console.log(error);
   }
