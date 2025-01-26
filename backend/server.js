@@ -42,7 +42,7 @@ app.post("/result" , (req  , res) => {
     secondwinner : req.body[0].secondwinner,
     thirdwinner : req.body[0].thirdwinner,
   });
-  const results = result.save();
+  result.save();
   res.status(200).send("ok");
 })
 app.get("/result", (req, res) => {
@@ -135,7 +135,7 @@ app.post("/adminevent", (req, res) => {
       place: req.body[0].place,
       description: req.body[0].description,
     });
-    const events = event.save();
+     event.save();
   } catch (error) {
     console.log(error);
   }

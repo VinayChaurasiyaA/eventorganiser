@@ -28,7 +28,11 @@ export default function Login({ setUserDetails }) {
       .then((res) => {
         //  console.log(res.data.result);
         // console.log(res.data.message);
-        if (res.data.message !== "failed" && res.data.result !== "Teacher" && res.data.result !== "Admin") {
+        if (
+          res.data.message !== "failed" &&
+          res.data.result !== "Teacher" &&
+          res.data.result !== "Admin"
+        ) {
           alert("Login");
           setUserDetails(res.data.result);
           navigate("/user");
@@ -46,7 +50,7 @@ export default function Login({ setUserDetails }) {
     //console.log(user);
   };
   return (
-    <div className="main">
+    <div className="main min-h-screen">
       <div className="sub-main">
         <div>
           <div className="login-img">

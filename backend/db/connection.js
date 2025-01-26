@@ -1,16 +1,16 @@
 const mongoose = require("mongoose");
-// put your mongodb url! and then enter into admins panel and then create events, and also register!
+
+// MongoDB connection URL
+const mongoURL = "your-mongodb-connection-url-here"; // Replace with your actual MongoDB URL
+
 mongoose
-  .connect(
-   // put your databse
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
-  .then(() => {
-    console.log(`Connectio is succesful in mongoose`);
+  .connect(mongoURL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
   })
-  .catch((e) => {
-    console.log(e + "no connection");
+  .then(() => {
+    console.log("Connection is successful in mongoose");
+  })
+  .catch((error) => {
+    console.error("No connection. Error:", error);
   });

@@ -1,102 +1,87 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import sport from "./Images/sportevent.jpg"
-import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-export default function Topevents({setEventId, eventId, setEventName, eventName}) {
-  let newData = {};
-  const [data, setData] = useState();
-  const [another, setAnother] = useState();
+import sport from "./Images/sportevent.jpg"; // Default image placeholder
+import { Button } from "react-bootstrap";
+
+export default function Topevents({
+  setEventId,
+  eventId,
+  setEventName,
+  eventName,
+}) {
+  const [data, setData] = useState([]);
+  const navigate = useNavigate();
+
   useEffect(() => {
     axios.get("https://events-yv65.onrender.com/allevents").then((result) => {
-      // console.log(result.data);
-      setData(result.data[0]);
-      setAnother(result.data[1]);
-      // Object.assign(newData , result.data[0]);
-      // Object.assign(newData , result.data[1]);
+      setData(result.data || []);
     });
   }, []);
-  const navigate = useNavigate();
-  const handlOnClick = (e , eventname , id) => {
-    //todo
-    setEventName(eventname)
+
+  const handleOnClick = (e, eventname, id) => {
+    setEventName(eventname);
     setEventId(id);
-    console.log(id);
     navigate(`/more-events/${eventname}`);
-  }
+  };
+
   return (
-    <div className="allevents">
-      {
-        <>
-          <div class="card mb-3" >
-            <div class="row no-gutters">
-              <div class="col-md-4">
-                <img src={sport} class="card-img" alt="..." />
-              </div>
-              <div class="col-md-4">
-                <div class="card-body">
-                  <h3 class="card-title">{data?.eventname}</h3>
-                  <h2 class="card-text">
-                    {data?.description}
-                  </h2>
-                  <p className="card-title">
-                    {data?.place}
-                  </p>
-                  <p className="card-text">
-                    {data?.date}
-                  </p>
-                  <p className="card-title">
-                    You can enroll in the event by clicking on the below button
-                  </p>
-                  <Button
-                        variant="primary"
-                        onClick={(e) => handlOnClick(e , data?.eventname , data?.id)}
-                      >
-                        ENROLL
-                  </Button>
-                  {/* <p class="card-text">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                  </p> */}
-                </div>
-              </div>
+    <div className="allevents min-h-screen py-5">
+      <h1 className="text-center text-primary mb-5">Top Events</h1>
+      <div className="row g-4">
+        {data.length > 0 ? (
+          data.map((event, index) => (
+            <div key={index} className="col-lg-6">
+              <EventCard
+                event={{ ...event, image: sport }}
+                onEnroll={(e) => handleOnClick(e, event.eventname, event.id)}
+              />
             </div>
+          ))
+        ) : (
+          <div className="col-12 mt-10 text-black text-center">
+            No events found. Please check back later!
           </div>
-          <div class="card mb-3" >
-            <div class="row no-gutters">
-              <div class="col-md-4">
-                <img src={sport} class="card-img" alt="..." />
-              </div>
-              <div class="col-md-4">
-                <div class="card-body">
-                  <h2 class="card-title">{another?.eventname}</h2>
-                  <p class="card-text">
-                    {another?.description}
-                  </p>
-                  <p className="card-title">
-                    {another?.place}
-                  </p>
-                  <p className="card-text">
-                    {data?.date}
-                  </p>
-                  <p className="card-title">
-                    You can enroll in the event by clicking on the below button
-                  </p>
-                  <Button
-                        variant="primary"
-                        onClick={(e) => handlOnClick(e , another?.eventname , another?.id)}
-                      >
-                        ENROLL
-                  </Button>
-                  {/* <p class="card-text">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                  </p> */}
-                </div>
-              </div>
-            </div>
-          </div>
-         
-        </>
-      }
+        )}
+      </div>
     </div>
   );
 }
+
+const EventCard = ({ event, onEnroll }) => {
+  return (
+    <div className="card mb-4 shadow-lg border-0">
+      <div className="row no-gutters">
+        {/* Event Image */}
+        <div className="col-md-4">
+          <img
+            src={event.image || "https://via.placeholder.com/300"}
+            className="card-img"
+            alt={event.eventname || "Event"}
+          />
+        </div>
+        {/* Event Details */}
+        <div className="col-md-8 d-flex flex-column justify-content-center p-3">
+          <div className="card-body">
+            <h3 className="card-title text-primary fw-bold">
+              {event.eventname}
+            </h3>
+            <p className="card-text text-muted">{event.description}</p>
+            <p className="card-title">
+              <strong>Place:</strong> {event.place}
+            </p>
+            <p className="card-text">
+              <strong>Date:</strong> {event.date}
+            </p>
+            <p className="card-title text-secondary">
+              You can enroll in the event by clicking on the button below.
+            </p>
+            <Button variant="primary" onClick={onEnroll}>
+              Enroll
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};

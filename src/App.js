@@ -20,9 +20,10 @@ import Event from "./Event";
 import AdminPanel from "./AdminPanel";
 import Teacher from "./Teacher";
 import Result from "./Result";
-import Controller from './Controller'
+import Controller from "./Controller";
 
 function App() {
+  // instead of doing this I can use context api
   const [userDetails, setUserDetails] = useState({});
   const [eventId, setEventId] = useState();
   const [eventName, setEventName] = useState("");
@@ -34,7 +35,7 @@ function App() {
         <Sidenav></Sidenav>
         <Routes>
           <Route path="/" exact element={<Homepage />} />
-          <Route path="/about us" exact element={<About />} />
+          <Route path="/about-us" exact element={<About />} />
           <Route
             path="/allevents"
             exact
